@@ -6,24 +6,16 @@ import MyList from '~/pages/MyList';
 import BrowseByLanguages from '~/pages/BrowseByLanguages';
 import NotFound from '~/pages/NotFound';
 
-const routes = {
-    home: '/',
-    tvshows: '/tvshows',
-    movies: '/movies',
-    newpopular: '/new-popular',
-    mylist: '/mylist',
-    browsebylanguages: '/browse-by-languages',
-    notfound: '*',
-};
+import config from '~/config';
 
 const publicRoutes = [
-    { path: routes.home, component: Home },
-    { path: routes.tvshows, component: TVShows },
-    { path: routes.movies, component: Movies },
-    { path: routes.newpopular, component: NewPopular },
-    { path: routes.mylist, component: MyList },
-    { path: routes.browsebylanguages, component: BrowseByLanguages },
-    { path: routes.notfound, component: NotFound },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.tvshows, component: TVShows },
+    { path: config.routes.movies, component: Movies },
+    { path: config.routes.newpopular, component: NewPopular },
+    { path: config.routes.mylist, component: MyList },
+    { path: config.routes.browsebylanguages, component: BrowseByLanguages },
+    { path: config.routes.notfound, component: NotFound },
 ];
 
 const privateRoutes = [];

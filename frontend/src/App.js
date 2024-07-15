@@ -6,7 +6,6 @@ import logo from './logo.png';
 import { publicRoutes } from './routes';
 
 function App() {
-    console.log(publicRoutes)
     return (
         <Router>
             <div className="App">

@@ -5,7 +5,7 @@ import styles from './DefaultLayout.module.scss';
 
 function DefaultLayout({ children }) {
     return (
-        <div>
+        <div className='container'>
             <Header />
             <div className="content">{children}</div>
             <Footer />
