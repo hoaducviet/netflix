@@ -2,9 +2,10 @@
 
 :root {
     --default-text-color: #e5e5e5;
-    --default-text-color-hover: #ffff;
+    --default-text-color-hover: #f1eded;
 
     --default-background-color: #141414;
+    --default-scrollbar-color: #eae4e4;
 
     // Default layout
     --default-layout-padding-width: 60px;
@@ -30,24 +31,25 @@ body {
 body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
-    overflow-y: overlay;
+    overflow-y: auto;
 }
 
 //Scroll bar
 
 html ::-webkit-scrollbar {
     border-radius: 0px;
-    width: 8px;
+    width: 5px;
 }
 
 html *::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba(255, 255, 255, 0.2);
+
 }
 
 html *::-webkit-scrollbar-track {
     border-radius: 0;
-    background-color: rgba(255, 254, 254, 0);
+    background-color: transparent;
 }
 
 button,

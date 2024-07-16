@@ -1,0 +1,50 @@
+.container {
+    --image-width: 100px;
+    --image-height: 70px;
+    
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    justify-content: center;
+    user-select: none;
+
+    .image{
+        display: inline-block;
+        width: auto;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+
+
+        .image-icon{
+            width: var(--image-width);
+            height: var(--image-height);
+        }
+
+    }
+    .information{
+        display: inline-block;
+        color: var(--default-text-color);
+        padding: 0 10px;
+        
+
+
+        .detail {
+            display: flex;
+            font-size: 14px;
+
+            &:hover {
+                color: var(--default-text-color-hover);
+            }
+
+
+        }
+        .time{
+            display: flex;
+            font-size: 10px;
+            bottom: 1%;
+
+        }
+    }
+}

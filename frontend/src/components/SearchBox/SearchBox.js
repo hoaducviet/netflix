@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './SearchBox.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRing, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +32,6 @@ function SearchBox() {
     const searchInputRef = useRef();
 
     useEffect(() => {
-        
         const handleClickOutside = (event) => {
             if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
                 setIsSearched(false);
@@ -66,7 +65,9 @@ function SearchBox() {
                                 placeholder="Movies, actors, genres,..."
                                 className={cx('input-icon')}
                             />
-                            <FontAwesomeIcon className={cx('delete-icon')} onClick={handleDelete} icon={faXmark} />
+                            {!!searchValue && (
+                                <FontAwesomeIcon className={cx('delete-icon')} onClick={handleDelete} icon={faXmark} />
+                            )}
                         </button>
                     </div>
                 )}

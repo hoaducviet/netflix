@@ -1,0 +1,28 @@
+.avatar-image {
+    display: block;
+    padding: 5px 10px;
+    
+    .avatar-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        vertical-align: middle;
+    }
+}
+
+.name-image{
+    display: block;
+    align-items: center;
+    
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}

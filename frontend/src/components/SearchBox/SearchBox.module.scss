@@ -1,6 +1,7 @@
 .search-box {
     display: flex;
     font-size: 12px;
+
     .search-tab {
         display: block;
         background: transparent;
@@ -16,8 +17,7 @@
     }
 }
 .search-input {
-    position: absolute;
-    
+    transition: width 2s ease;
 
     .search-link {
         display: flex;
