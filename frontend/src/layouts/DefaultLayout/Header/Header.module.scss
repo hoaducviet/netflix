@@ -13,6 +13,8 @@
     width: var(--default-header-width);
     background: linear-gradient(to bottom, var(--default-background-color), transparent);
     justify-content: center;
+    user-select: none;
+    z-index: 100;
 }
 
 .inner {
