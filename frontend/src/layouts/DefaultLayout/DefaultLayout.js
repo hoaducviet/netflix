@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Header from './Header';
 import Footer from './Footer';
 
@@ -12,7 +10,7 @@ function DefaultLayout({ children }) {
     return (
         <div className={cx('container')}>
             <Header />
-            <div className={cx('content')}>{children}</div>
+            {children}
             <Footer />
         </div>
     );

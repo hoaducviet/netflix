@@ -1,6 +1,6 @@
 const navlinks = [
     {
-        path: '/',
+        path: '/browse',
         name: 'Home',
     },
     {

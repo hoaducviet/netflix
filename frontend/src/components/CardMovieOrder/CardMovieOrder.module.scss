@@ -1,0 +1,60 @@
+.container {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 0.2vw;
+    width: 16vw;
+    height: 10vw;
+    background-size: cover;
+    overflow: hidden;
+
+    .image-movie {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        user-select: none;
+        z-index: 10;
+
+        .number {
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 0;
+            width: 65%;
+            height: 110%;
+            z-index: 11;
+            svg {
+                position: relative;
+                display: block;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                color: var(--default-text-color-hover);
+            }
+        }
+
+        .image-container {
+            position: absolute;
+            display: flex;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            right: 0;
+
+            z-index: 12;
+            .image {
+                position: relative;
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                border-radius: 0.2vw;
+            }
+        }
+    }
+}

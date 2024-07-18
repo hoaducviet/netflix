@@ -1,0 +1,46 @@
+.container {
+    position: relative;
+    display: block;
+    user-select: none;
+    overflow: hidden;
+    margin: 3vw 0;
+
+    .row-header {
+        position: relative;
+
+        display: block;
+        font-weight: 500;
+        font-size: 1.5em;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        user-select: none;
+
+        .more-row-header {
+            position: relative;
+            display: inline-block;
+            color: rgb(229, 229, 229);
+            top: 0;
+            left: 0;
+            
+            min-width: 6em;
+            margin: 0 4% 0.5em 60px;
+
+            .more-row-header-title {
+                position: relative;
+                display: inline-block;
+                vertical-align: bottom;
+                font-size: 1.4vw;
+            }
+        }
+    }
+    .row-slider {
+        display: block;
+
+        .card {
+            position: relative;
+            padding: 0 0.2vw;
+        }
+    }
+}

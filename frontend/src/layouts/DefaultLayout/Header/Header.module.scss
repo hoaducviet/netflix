@@ -50,16 +50,12 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
-    unicode-bidi: isolate;
-
-    
 
     .text-navigation {
         color: var(default-text-color);
         font-weight: 400;
-
     }
-    
+
     .active {
         color: var(--default-text-color-hover);
         font-weight: 500;

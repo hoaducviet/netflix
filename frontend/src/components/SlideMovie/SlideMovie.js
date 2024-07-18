@@ -6,13 +6,13 @@ import styles from './SlideMovie.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SlideMovie({ header, movies }) {
+function SlideMovie({ heading, movies }) {
     return (
         <div className={cx('container')}>
             <h2 className={cx('row-header')}>
                 <Link to='/movie' className={cx('more-row-header')}>
                     <div className={cx('more-row-header-title')}>
-                    {header}
+                    {heading}
                     </div>
                 </Link>
             </h2>

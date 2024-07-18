@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import DefaultLayout from '~/layouts/DefaultLayout';
-import logo from './logo.png';
+
 
 import { publicRoutes } from './routes';
+import { Fragment } from 'react';
 
 function App() {
     return (
@@ -11,15 +12,23 @@ function App() {
             <div className="App">
                 <Routes>
                     {publicRoutes.map((route, index) => {
+                        let Layout = DefaultLayout;
+
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+
                         const Page = route.component;
                         return (
                             <Route
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <DefaultLayout>
+                                    <Layout>
                                         <Page />
-                                    </DefaultLayout>
+                                    </Layout>
                                 }
                             />
                         );
