@@ -5,7 +5,7 @@ const routes = {
     newpopular: '/new-popular',
     mylist: '/mylist',
     browsebylanguages: '/browse-by-languages',
-    watch: '/watch/:name',
+    watch: '/watch/:id',
     notfound: '*',
 };
 

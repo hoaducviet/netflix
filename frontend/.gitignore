@@ -6,6 +6,14 @@
 .pnp.js
 /public/media
 
+
+# media file
+
+/public/*.mp4
+/public/*.gif
+/public/*.mov
+
+
 # testing
 /coverage
 

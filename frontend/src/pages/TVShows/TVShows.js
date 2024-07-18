@@ -91,6 +91,7 @@ const movies = [
 
 const moviesOrder = [
     {
+        id: 1,
         iconNumber: <FontAwesomeIcon icon={fa1} />,
         title: 'Avengers Infinity War',
         videoURL: '/media/AvengersInfinityWar.mp4',
@@ -98,6 +99,8 @@ const moviesOrder = [
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABSjLq0f4YRzyNV2FSxh-mYLjy4Gdj_yVtC5YSd0GTAGVP1w35HOxPBxeBQeN31RBP-3j_8xFU_No1aAtcRsTZBnYJdU-QoVV9mCv.webp?r=8dc',
     },
     {
+        id: 1,
+
         iconNumber: <FontAwesomeIcon icon={fa2} />,
         title: 'Spider Man 2',
         videoURL: '/media/SpiderMan2.mp4',
@@ -105,6 +108,8 @@ const moviesOrder = [
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABSjLq0f4YRzyNV2FSxh-mYLjy4Gdj_yVtC5YSd0GTAGVP1w35HOxPBxeBQeN31RBP-3j_8xFU_No1aAtcRsTZBnYJdU-QoVV9mCv.webp?r=8dc',
     },
     {
+        id: 1,
+
         iconNumber: <FontAwesomeIcon icon={fa3} />,
         title: 'Doctor John',
         videoURL: '/media/AvengersInfinityWar.mp4',
@@ -112,6 +117,8 @@ const moviesOrder = [
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABSjLq0f4YRzyNV2FSxh-mYLjy4Gdj_yVtC5YSd0GTAGVP1w35HOxPBxeBQeN31RBP-3j_8xFU_No1aAtcRsTZBnYJdU-QoVV9mCv.webp?r=8dc',
     },
     {
+        id: 1,
+
         iconNumber: <FontAwesomeIcon icon={fa4} />,
         title: 'Journey 2: The Mysterious Island',
         videoURL: '/media/SpiderMan2.mp4',
@@ -119,6 +126,8 @@ const moviesOrder = [
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABSjLq0f4YRzyNV2FSxh-mYLjy4Gdj_yVtC5YSd0GTAGVP1w35HOxPBxeBQeN31RBP-3j_8xFU_No1aAtcRsTZBnYJdU-QoVV9mCv.webp?r=8dc',
     },
     {
+        id: 1,
+
         iconNumber: <FontAwesomeIcon icon={fa5} />,
         title: 'Rampage',
         videoURL: '/media/AvengersInfinityWar.mp4',
@@ -126,6 +135,8 @@ const moviesOrder = [
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABSjLq0f4YRzyNV2FSxh-mYLjy4Gdj_yVtC5YSd0GTAGVP1w35HOxPBxeBQeN31RBP-3j_8xFU_No1aAtcRsTZBnYJdU-QoVV9mCv.webp?r=8dc',
     },
     {
+        id: 1,
+
         iconNumber: <FontAwesomeIcon icon={fa6} />,
         title: 'Top Gun: Maverrick',
         videoURL: '/media/SpiderMan2.mp4',
@@ -166,15 +177,12 @@ const moviesOrder = [
 function TVShows() {
     return (
         <div className={cx('container')}>
-            {/* <SlideMovie header='Made in Vietnam' movies={movies} />
-            <SlideMovie header='Made in Japan' movies={movies} />
-            <SlideMovie header='Made in Japan' movies={movies} /> */}
-            <SlideMovie header="Made in Japan" movies={moviesOrder} />
-            <SlideMovie header="Made in Japan" movies={moviesOrder} />
-            <SlideMovie header="Made in Japan" movies={moviesOrder} />
-            {/* <SlideMovieOrder header="Made in Japan" movies={moviesOrder} />
+            <SlideMovie header="Made in Japan" movies={movies} />
+            <SlideMovie header="Made in Japan" movies={movies} />
+            <SlideMovie header="Made in Japan" movies={movies} />
             <SlideMovieOrder header="Made in Japan" movies={moviesOrder} />
-            <SlideMovieOrder header="Made in Japan" movies={moviesOrder} /> */}
+            <SlideMovieOrder header="Made in Japan" movies={moviesOrder} />
+            <SlideMovieOrder header="Made in Japan" movies={moviesOrder} />
         </div>
     );
 }
