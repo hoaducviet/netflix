@@ -23,7 +23,7 @@
             color: rgb(229, 229, 229);
             top: 0;
             left: 0;
-            
+
             min-width: 6em;
             margin: 0 4% 0.5em 60px;
 
@@ -41,6 +41,61 @@
         .card {
             position: relative;
             padding: 0 0.2vw;
+        }
+    }
+}
+
+.prev-arrow {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2vw;
+    z-index: 10;
+
+    background-color: rgb(0, 0, 0, 0.3);
+    .icon-prev {
+        display: none;
+    }
+    &:hover {
+        background-color: rgb(0, 0, 0, 0.45);
+
+        .icon-prev {
+            position: relative;
+            display: flex;
+            left: 1.3vw;
+            transform: translateY(450%);
+            height: 1vw;
+            color: white;
+        }
+    }
+}
+
+.next-arrow {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2vw;
+    z-index: 10;
+    background-color: rgb(0, 0, 0, 0.3);
+
+    .icon-next {
+        display: none;
+    }
+    &:hover {
+        background-color: rgb(0, 0, 0, 0.45);
+
+        .icon-next {
+            position: relative;
+            display: flex;
+            transform: translateY(450%);
+            height: 1vw;
+            color: white;
         }
     }
 }

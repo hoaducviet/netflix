@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
@@ -10,15 +10,77 @@ const cx = classNames.bind(styles);
 function Watch() {
     const { id } = useParams();
 
-    const Urls = [
-        '/media/intro.mp4',
-        'https://www.youtube.com/watch?v=gPh0Jifw2oI',
-        'https://www.youtube.com/watch?v=c1psIq1oXuA',
-    ];
+    const playerRef = useRef();
+    const [isIntroPlaying, setIsIntroPlaying] = useState(true);
+    const [isPause, setIsPause] = useState(false);
+
+    const Urls1 = ['/media/intro.mp4'];
+    const Urls2 = ['/media/movies/AvengersInfinityWar.mp4'];
+
+    const handlePlay = () => {
+        setIsPause(false);
+    };
+    const handlePause = () => {
+        setIsPause(true);
+    };
+    const handleOverlayClick = () => {
+        setIsPause(false);
+        playerRef.current.getInternalPlayer().play();
+    };
+    const handleEnterFullscreen = () => {
+        if (playerRef.current) {
+            const player = playerRef.current.getInternalPlayer();
+            if (player) {
+                if (player.requestFullscreen) {
+                    player.requestFullscreen();
+                } else if (player.mozRequestFullScreen) {
+                    // Firefox
+                    player.mozRequestFullScreen();
+                } else if (player.webkitRequestFullscreen) {
+                    // Chrome, Safari and Opera
+                    player.webkitRequestFullscreen();
+                } else if (player.msRequestFullscreen) {
+                    // IE/Edge
+                    player.msRequestFullscreen();
+                }
+            }
+        }
+    };
 
     return (
         <div className={cx('video-wrapper')}>
-            <ReactPlayer url={Urls} playing={true} controls width="100%" height="100%" />
+            {isIntroPlaying ? (
+                <ReactPlayer
+                    ref={playerRef}
+                    url={Urls1}
+                    playing={true}
+                    controls={false}
+                    width="100%"
+                    height="100%"
+                    muted={false}
+                    onEnded={() => {
+                        setIsIntroPlaying(false);
+                    }}
+                />
+            ) : (
+                <ReactPlayer
+                    ref={playerRef}
+                    url={Urls2}
+                    playing={true}
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                    muted={false}
+                    playbackRate={1}
+                    onPlay={handlePlay}
+                    onPause={handlePause}
+                />
+            )}
+            {isPause && (
+                <div className={cx('overlay')} onClick={handleOverlayClick}>
+                    {/* <img src="/logo192.png" alt="logo" className={cx('overlay-image')}/> */}
+                </div>
+            )}
         </div>
     );
 }
