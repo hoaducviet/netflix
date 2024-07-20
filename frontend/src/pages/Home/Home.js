@@ -81,7 +81,7 @@ const movies = [
         videoURL: '/media/SpiderMan2.mp4',
         imageURL:
             'https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABTTCYivGvNYFZphZZRuv2y9me_OrNOZPa-PSxsFCdwZ0R9wx1Elbh7VDdKWUFY3t5Tqd40Nso7whR6Xi2FJoHWnjMnSPxlLrGEs.webp?r=67e',
-    }
+    },
 ];
 
 const moviesOrder = [
@@ -237,17 +237,13 @@ const slideContainer = [
 ];
 
 function Home() {
-    const style = {
-        height: '100vw'
-    };
-
-
+    const ran = Math.floor(Math.random() * movies.length)
     return (
-        <div  className={cx('container')}>
+        <div className={cx('container')}>
             <div className={cx('background-layer')}>
                 <div className={cx('bill-board')}>
                     <div className={cx('hero-image-wrapper')}>
-                        <img src={movies[1].imageURL} alt="imag" className={cx('image-wrapper')} />
+                        <img src={movies[ran].imageURL} alt="imag" className={cx('image-wrapper')} />
                     </div>
                     <div className={cx('hero-image-bottom')}></div>
                     <div className={cx('hero-image-button-label')}></div>
