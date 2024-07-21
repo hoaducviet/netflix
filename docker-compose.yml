@@ -1,0 +1,31 @@
+
+services:
+
+  frontend:
+    networks:
+      - netflix
+    image: nginx:1.23.3
+    port:
+      - 80:80
+
+  backend:
+    networks:
+      - netflix
+    port:
+      - 8000:8000
+    
+  database:
+    networks:
+      - netflix
+    
+  serverstream:
+    networks:
+        - netflix
+    port:
+      - 8080:8080
+    
+  
+
+networks:
+  netflix:
+    driver: bridge
