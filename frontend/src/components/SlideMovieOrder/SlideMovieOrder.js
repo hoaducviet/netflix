@@ -40,7 +40,7 @@ function SlideMovieOrder({ heading, movies }) {
         infinite: true,
         speed: 400,
         slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToScroll: 1,
         arrows: true,
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,

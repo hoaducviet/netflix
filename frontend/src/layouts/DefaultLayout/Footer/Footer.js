@@ -77,21 +77,25 @@ const footerItems = [
     {
         name: 'Contact Us',
         to: '/audio',
-    }
+    },
 ];
 
 function Footer() {
     return (
         <div className={cx('container')}>
             <div className={cx('social-links')}>
-                {socialItems.map((item) => {
-                    return <p className={cx('social-icon')}>{item.icon}</p>;
+                {socialItems.map((item, index) => {
+                    return (
+                        <p key={index} className={cx('social-icon')}>
+                            {item.icon}
+                        </p>
+                    );
                 })}
             </div>
             <div className={cx('footer-links')}>
-                {footerItems.map((item) => {
+                {footerItems.map((item, index) => {
                     return (
-                        <Link to={item.to} className={cx('item-link')}>
+                        <Link key={index} to={item.to} className={cx('item-link')}>
                             <button className={cx('footer-item')}>{item.name}</button>
                         </Link>
                     );

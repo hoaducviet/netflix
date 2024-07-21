@@ -7,15 +7,25 @@ import styles from './Watch.module.scss';
 
 const cx = classNames.bind(styles);
 
+
+
 function Watch() {
     const { id } = useParams();
+
+    const api = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS
 
     const playerRef = useRef();
     const [isIntroPlaying, setIsIntroPlaying] = useState(true);
     const [isPause, setIsPause] = useState(false);
 
     const Urls1 = ['/media/intro.mp4'];
-    const Urls2 = ['/media/movies/AvengersInfinityWar.mp4'];
+
+    const movie = {
+        id: 'spider',
+        title: 'Avengers InfinityWar',
+        image: 'avengers',
+        author: 'viethoaduc'
+    }
 
     const handlePlay = () => {
         setIsPause(false);
@@ -65,7 +75,7 @@ function Watch() {
             ) : (
                 <ReactPlayer
                     ref={playerRef}
-                    url={Urls2}
+                    url={`${api}/${movie.id}`}
                     playing={true}
                     controls={true}
                     width="100%"
