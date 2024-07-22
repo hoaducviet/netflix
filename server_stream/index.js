@@ -1,12 +1,20 @@
 require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 const videoFileMap = {
   avenger: "./videos/avenger.mp4",
   spider: "./videos/spider.mp4",
   cdn: "./videos/cdn.mp4",
 };
+
+const imageFileMap = {
+  logo: "./images/logo.png",
+  intro: "./images/intro.gif",
+  1: "./images/1.png",
+};
+
 
 const app = express();
 app.get("/videos/:filename", (req, res) => {
@@ -50,7 +58,32 @@ app.get("/videos/:filename", (req, res) => {
     fs.createReadStream(filePath).pipe(res);
   }
 });
-console.log(process.env)
+
+app.get("/images/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filePath = imageFileMap[filename];
+
+  if (!filePath) {
+    return res.status(404).send("File not found");
+  }
+
+  const ext = path.extname(filePath).toLowerCase();
+  let contentType = "image/jpeg"; // Mặc định loại hình ảnh là jpeg
+
+  if (ext === ".png") {
+    contentType = "image/png";
+  } else if (ext === ".jpg" || ext === ".jpeg") {
+    contentType = "image/jpeg";
+  }
+
+  const head = {
+    "Content-Type": contentType,
+  };
+
+  res.writeHead(200, head);
+  fs.createReadStream(filePath).pipe(res);
+});
+
 
 app.listen(8080),
   () => {
