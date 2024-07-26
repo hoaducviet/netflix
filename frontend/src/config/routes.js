@@ -1,4 +1,6 @@
 const routes = {
+    login: '/login',
+    
     home: '/browse',
     tvshows: '/tvshows',
     movies: '/movies',

@@ -5,6 +5,7 @@ import SlideMovieOrder from '~/components/SlideMovieOrder';
 import SlideMovie from '~/components/SlideMovie';
 import Information from '~/components/Information';
 
+import icons from '~/assets/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7, fa8, fa9 } from '@fortawesome/free-solid-svg-icons';
 
@@ -279,28 +280,40 @@ const API = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS;
 function Home() {
     const movieCurrent = movies[Math.floor(Math.random() * movies.length)];
 
+    const [playing, setPlaying] = useState(false);
     const player = useRef();
 
-    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setPlaying(true);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleEnded = () => {
+        setPlaying(false);
+    };
     return (
         <div className={cx('container')}>
             <div className={cx('background-layer')}>
                 <div className={cx('bill-board')}>
                     <div className={cx('hero-image-wrapper')}>
-                        <img src={movieCurrent.imageURL} alt="imag" className={cx('image-wrapper')} />
-                        {/* <ReactPlayer
-                            ref={player}
-                            url={`${API}/${movieCurrent.id}`}
-                            playing={true}
-                            controls={true}
-                            width="100%"
-                            height="100%"
-                            muted={false}
-                            playbackRate={1}
-                        /> */}
+                        {!playing ? (
+                            <img src={movieCurrent.imageURL} alt="imag" className={cx('image-wrapper')} />
+                        ) : (
+                            <ReactPlayer
+                                className={cx('video-wrapper')}
+                                ref={player}
+                                url={`${API}/cdn`}
+                                playing={playing}
+                                width="100%"
+                                height="100%"
+                                muted={true}
+                                onEnded={handleEnded}
+                            />
+                        )}
                     </div>
                     <div className={cx('hero-image-bottom')}></div>
-                    <div className={cx('hero-image-button-label')}></div>
                 </div>
             </div>
 
@@ -310,7 +323,9 @@ function Home() {
                         <Information movie={movieCurrent} />
                     </div>
                     <div className={cx('information-button-label')}>
-                        <div className={cx('icon-label')}></div>
+                        <div className={cx('icon-label')}>
+                            <img src={icons.load} alt="icon" className={cx('icon')} />
+                        </div>
                         <div className={cx('heading-label')}></div>
                         <div className={cx('label')}>{movieCurrent.label}</div>
                     </div>

@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    border: 0.01px solid var(--footer-text-color);
+    background: transparent;
+    color: var(--default-text-color-hover);
+
+    .languages-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.5rem;
+        .icon {
+        }
+    }
+    .languages-options {
+        color: var(--default-text-color-hover);
+        display: inline-flex;
+        background: transparent;
+        align-items: center;
+        justify-content: center;
+
+        .options {
+        }
+    }
+}
+
+select {
+    border: none;
+    background: transparent;
+}

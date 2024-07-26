@@ -1,0 +1,15 @@
+.container {
+
+    .background-image {
+        position: absolute;
+        overflow-x: hidden;
+        
+        .image-wrapper{
+            width: 100vw;
+            z-index: -10;
+            
+        }
+    }
+    .form-login {
+    }
+}

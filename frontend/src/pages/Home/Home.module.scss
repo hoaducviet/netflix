@@ -34,6 +34,14 @@
                     transition: opacity 0.4s cubic-bezier(0.665, 0.235, 0.265, 0.8) 0s;
                     z-index: -2;
                 }
+
+                .video-wrapper {
+                    position: absolute;
+                    background-position: 50%;
+                    background-size: cover;
+                    opacity: 1;
+                    z-index: -2;
+                }
             }
             .hero-image-bottom {
                 position: absolute;
@@ -59,12 +67,6 @@
                 user-select: none;
                 z-index: -1;
             }
-
-            .hero-image-button-label {
-                // Icon replay and labels
-
-                z-index: 1;
-            }
         }
     }
 
@@ -89,6 +91,15 @@
                 justify-content: end;
 
                 .icon-label {
+                    margin-right: 1.5rem;
+                    height: 100%;
+                    width: auto;
+                    .icon {
+                    }
+
+                    &:hover {
+                        background-color: var(--default-text-color);
+                    }
                 }
                 .heading-label {
                     display: inline-flex;
