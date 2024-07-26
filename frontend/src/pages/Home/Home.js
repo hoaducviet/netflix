@@ -288,7 +288,7 @@ function Home() {
                 <div className={cx('bill-board')}>
                     <div className={cx('hero-image-wrapper')}>
                         <img src={movieCurrent.imageURL} alt="imag" className={cx('image-wrapper')} />
-                        <ReactPlayer
+                        {/* <ReactPlayer
                             ref={player}
                             url={`${API}/${movieCurrent.id}`}
                             playing={true}
@@ -297,7 +297,7 @@ function Home() {
                             height="100%"
                             muted={false}
                             playbackRate={1}
-                        />
+                        /> */}
                     </div>
                     <div className={cx('hero-image-bottom')}></div>
                     <div className={cx('hero-image-button-label')}></div>
