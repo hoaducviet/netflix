@@ -15,7 +15,19 @@
     --default-header-height: 68px;
     --default-header-width: 100vw;
 
-    font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    //Default font
+    --defaul-font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    
+    //Default color button
+    --primary: white;
+    --primary-hover: rgba(255, 255, 255, 0.85);  
+    --black: black;
+
+    --gray: rgba(109, 109, 110, 0.7);
+    --gray-hover: rgba(109, 109, 110, 0.45);
+
+
+    font-family: var(--defaul-font-family);
 }
 * {
     margin: 0;

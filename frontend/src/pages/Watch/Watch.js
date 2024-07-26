@@ -7,12 +7,10 @@ import styles from './Watch.module.scss';
 
 const cx = classNames.bind(styles);
 
-
-
 function Watch() {
     const { id } = useParams();
 
-    const api = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS
+    const API = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS;
 
     const playerRef = useRef();
     const [isIntroPlaying, setIsIntroPlaying] = useState(true);
@@ -24,8 +22,8 @@ function Watch() {
         id: 'spider',
         title: 'Avengers InfinityWar',
         image: 'avengers',
-        author: 'viethoaduc'
-    }
+        author: 'viethoaduc',
+    };
 
     const handlePlay = () => {
         setIsPause(false);
@@ -75,7 +73,7 @@ function Watch() {
             ) : (
                 <ReactPlayer
                     ref={playerRef}
-                    url={`${api}/${movie.id}`}
+                    url={`${API}/${movie.id}`}
                     playing={true}
                     controls={true}
                     width="100%"

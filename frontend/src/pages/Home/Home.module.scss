@@ -69,10 +69,46 @@
     }
 
     .main-layer {
-        .media-information-container{
+        .media-information-container {
             width: 100%;
-            height: 35vw;
-        }
+            height: 39.5vw;
+            color: var(--default-text-color-hover);
 
+            .information-container {
+                display: block;
+                bottom: 35%;
+                left: 4%;
+                width: 36%;
+                height: auto;
+                margin-left: var(--default-layout-padding-width);
+            }
+
+            .information-button-label {
+                display: flex;
+                height: 2.5vw;
+                justify-content: end;
+
+                .icon-label {
+                }
+                .heading-label {
+                    display: inline-flex;
+                    background-color: var(--default-text-color);
+                    width: 0.2rem;
+                    height: 100%;
+                }
+                .label {
+                    background-color: var(--gray);
+                    display: inline-flex;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    justify-content: start;
+                    right: 0;
+                    bottom: 10vw;
+                    width: 7vw;
+                    height: 100%;
+                    padding-left: 1rem;
+                }
+            }
+        }
     }
 }
