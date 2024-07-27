@@ -1,0 +1,47 @@
+.container {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .inner {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0.01px solid var(--default-text-color);
+        border-radius: 3px;
+
+        background: transparent;
+        color: var(--default-text-color);
+        justify-content: center;
+        align-items: center;
+        padding: 0 15px;
+
+        &:focus-within {
+            border: 2px solid var(--default-text-color-hover);
+            .label-input {
+                font-size: 11px;
+                color: rgb(255, 255, 255, 0.3);
+            }
+
+            .text-input {
+                display: flex;
+            }
+        }
+
+        .label-input {
+            display: flex;
+            width: 100%;
+            font-size: 16px;
+            color: rgb(255, 255, 255, 0.7);
+            transition: font-size 0.05s, transform 0.3s;
+        }
+
+        .text-input {
+            display: none;
+            background: transparent;
+            font-size: 16px;
+            color: var(--default-text-color);
+            width: 100%;
+        }
+    }
+}

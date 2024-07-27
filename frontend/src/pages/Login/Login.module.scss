@@ -1,15 +1,19 @@
 .container {
+    display: flex;
+    position: relative;
+    width: 100vw;
 
-    .background-image {
-        position: absolute;
-        overflow-x: hidden;
-        
-        .image-wrapper{
-            width: 100vw;
-            z-index: -10;
-            
-        }
-    }
+    height: auto;
+    overflow-x: hidden;
+    z-index: 10;
+
     .form-login {
+        display: flex;
+        margin: 0 auto 50px;
+        width: auto;
+        height: auto;
+        padding: 0 5%;
+        font-size: 16px;
+        color: var(--default-text-color-hover);
     }
 }

@@ -17,14 +17,17 @@
 
     //Default font
     --defaul-font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
-    
+
     //Default color button
     --primary: white;
-    --primary-hover: rgba(255, 255, 255, 0.85);  
+    --primary-hover: rgba(255, 255, 255, 0.85);
     --black: black;
 
-    --gray: rgba(109, 109, 110, 0.7);
-    --gray-hover: rgba(109, 109, 110, 0.45);
+    --gray: rgba(128, 128, 128, 0.4);
+    --gray-hover: rgba(128, 128, 128, 0.306);
+
+    --signin: rgb(229, 9, 20);
+    --signin-hover: rgb(194, 17, 25);
 
 
     font-family: var(--defaul-font-family);

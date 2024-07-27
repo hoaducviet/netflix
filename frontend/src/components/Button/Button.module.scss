@@ -7,8 +7,7 @@
     margin: 0 1rem 1rem 0;
     border-radius: 4%;
     user-select: none;
-
-    background-color: red;
+    justify-content: center;
 
     .icon {
         display: inline-block;
@@ -21,16 +20,17 @@
             width: 2.4rem;
         }
     }
-    .content {
-        display: inline-block;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-family);
-        height: auto;
-        width: auto;
-        font-size: 1.6rem;
-        font-weight: 500;
-    }
+}
+
+.content {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    height: auto;
+    width: auto;
+    font-size: 1.6rem;
+    font-weight: 500;
 }
 
 .primary {
@@ -46,6 +46,38 @@
 .gray {
     background-color: var(--gray);
     border-color: black;
+
+    &:hover {
+        background-color: var(--gray-hover);
+    }
+}
+
+.signin {
+    display: flex;
+    width: 100%;
+    background-color: var(--signin);
+    border-color: black;
+    border-radius: 3px;
+    padding: 6px 16px;
+    .content {
+        font-size: 16px;
+    }
+
+    &:hover {
+        background-color: var(--signin-hover);
+    }
+}
+
+.text {
+    width: 100%;
+    background-color: var(--gray);
+    border-color: black;
+    border-radius: 3px;
+    padding: 6px 16px;
+
+    .content {
+        font-size: 16px;
+    }
 
     &:hover {
         background-color: var(--gray-hover);

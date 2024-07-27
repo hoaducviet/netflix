@@ -1,0 +1,110 @@
+.container {
+    display: block;
+    background-color: var(--login-background-color);
+    user-select: none;
+    box-sizing: border-box;
+    width: 450px;
+    padding: 48px 68px;
+    border-radius: 4px;
+
+    .header {
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 28px;
+    }
+    .form {
+        display: block;
+        width: 100%;
+
+        .form-email {
+            display: flex;
+            width: 100%;
+            height: 60px;
+            margin-bottom: 16px;
+        }
+        .form-password {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 16px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .form-text {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .form-forgot-text {
+            display: flex;
+            justify-content: center;
+
+            &:hover {
+                text-decoration: underline;
+                color: var(--default-text-color);
+            }
+        }
+    }
+    .footer {
+        display: block;
+        margin-top: 20px;
+        color: var(--default-text-color);
+        font-size: 16px;
+
+        .remember {
+            display: flex;
+            font-weight: 400;
+            justify-content: start;
+            align-items: center;
+
+            .box {
+                display: inline-flex;
+
+                margin-right: 10px;
+                width: 18px;
+                height: 18px;
+            }
+            .text-box {
+                display: inline-flex;
+            }
+        }
+        .signup-now {
+            display: block;
+            margin-top: 16px;
+            .signup-now-text {
+                color: rgb(255, 255, 255, 0.7);
+                font-weight: 400;
+                margin-right: 5px;
+            }
+            .signup-now-link {
+                font-weight: 500;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .note {
+            display: block;
+            margin-top: 11px;
+            font-size: 13px;
+            font-weight: 400;
+
+            .note-text {
+                color: rgb(255, 255, 255, 0.7);
+                margin-right: 3px;
+            }
+            .note-link {
+                color: rgb(0, 113, 235);
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

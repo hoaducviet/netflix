@@ -16,10 +16,9 @@ function Button({ item }) {
 
     const classes = cx('container', `${item.color}`);
 
-    console.log(classes);
     return (
         <Comp className={classes} {...props}>
-            <div className={cx('icon')}>{item.icon}</div>
+            {!!item.icon && <div className={cx('icon')}>{item.icon}</div>}
             <div className={cx('content')}>
                 <span>{item.content}</span>
             </div>

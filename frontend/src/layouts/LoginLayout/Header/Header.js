@@ -12,10 +12,15 @@ function Header() {
     return (
         <>
             <header className={cx('wrapper')}>
-                <div className={cx('inner')}>
-                    <Link to={config.routes.login} className={cx('logo-link')}>
-                        <img src={images.logo} alt="Netflix" className={cx('logo')} />
-                    </Link>
+                <div className={cx('container')}>
+                    <div className={cx('inner')}>
+                        <div className={cx('nav-logo')}>
+                            <Link to={config.routes.signup} className={cx('logo-link')}>
+                                <img src={images.logo} alt="Netflix" className={cx('logo')} />
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={cx('item')}></div>
                 </div>
             </header>
         </>
