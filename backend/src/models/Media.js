@@ -4,8 +4,7 @@ const slug = require("mongoose-slug-generator");
 const mongooseDelete = require("mongoose-delete");
 
 mongoose.plugin(slug);
-
-const User = new Schema(
+const Media = new Schema(
   {
     account: { type: String, required: true },
     password: { type: String, required: true, maxLength: 20 },
@@ -17,7 +16,7 @@ const User = new Schema(
 );
 
 //Custom query helpers
-User.query.sortable = function (req) {
+Media.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {
     const isValidType = ["asc", "desc"].includes(req.query.type);
     return this.sort({
@@ -28,9 +27,9 @@ User.query.sortable = function (req) {
 };
 
 //Add Plugin
-User.plugin(mongooseDelete, {
+Media.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("user", User);
+module.exports = mongoose.model("media", Media);

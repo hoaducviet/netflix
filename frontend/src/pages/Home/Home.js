@@ -15,7 +15,8 @@ import styles from './Home.module.scss';
 const cx = classNames.bind(styles);
 
 const movies = [
-    {
+    {   
+        id: 1,
         title: 'Avengers Infinity War',
         detail: 'This is detail of fiml Avengers Infinity War',
         label: '18+',
@@ -24,6 +25,7 @@ const movies = [
             'https://www.usatoday.com/gcdn/presto/2022/10/14/USAT/89e7eee0-28ac-403f-acfb-a3bd74a01790-avengers-infinity-war-1200-1200-675-675-crop-000000.jpeg?width=1200&disable=upscale&format=pjpg&auto=webp',
     },
     {
+        id: 2,
         title: 'Spider Man 2',
         detail: 'This is detail of fiml Avengers Infinity War',
         label: '18+',

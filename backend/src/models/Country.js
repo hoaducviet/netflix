@@ -4,17 +4,11 @@ const slug = require("mongoose-slug-generator");
 const mongooseDelete = require("mongoose-delete");
 
 mongoose.plugin(slug);
-
-const Parent = new Schema(
+const Country = new Schema(
   {
-    name: { type: String },
-    address: { type: String },
-    dateOfBirth: { type: String },
-    email: { type: String, maxLength: 255 },
-    gender: { type: String },
-    phone: { type: String },
-    user_Id: { type: String },
-    slug: { type: String, slug: "name" },
+    account: { type: String, required: true },
+    password: { type: String, required: true, maxLength: 20 },
+    role: { type: Number },
   },
   {
     timestamps: true,
@@ -22,7 +16,7 @@ const Parent = new Schema(
 );
 
 //Custom query helpers
-Parent.query.sortable = function (req) {
+Country.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {
     const isValidType = ["asc", "desc"].includes(req.query.type);
     return this.sort({
@@ -33,9 +27,9 @@ Parent.query.sortable = function (req) {
 };
 
 //Add Plugin
-Parent.plugin(mongooseDelete, {
+Country.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("Parent", Parent);
+module.exports = mongoose.model("genre", Country);

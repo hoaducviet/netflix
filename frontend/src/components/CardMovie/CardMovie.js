@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function CardMovie({ movie }) {
+    console.log(movie)
     return (
         <Link to={`/watch/${movie.id}`} className={cx('container')}>
             <div className={cx('image-movie')}>

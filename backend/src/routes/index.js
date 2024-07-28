@@ -4,7 +4,7 @@ const siteRouter = require("./site");
 
 function route(app) {
   app.use("/user", userRouter);
-  app.use("/admin", adminRouter);
-  app.use("/", siteRouter);
+  // app.use("/admin", adminRouter);
+  // app.use("/", siteRouter);
 }
 module.exports = route;

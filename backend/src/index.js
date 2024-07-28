@@ -6,6 +6,7 @@ const route = require("./routes");
 const db = require("./config/database");
 
 db.connect();
+
 const mongodbURI = db.mongodbURI;
 
 const app = express();

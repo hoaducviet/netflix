@@ -16,9 +16,6 @@ const movie = {
 function Movies() {
     return (
         <div className={cx('container')}>
-            <div className={cx('infor')}>
-                <Information movie={movie} />
-            </div>
         </div>
     );
 }
