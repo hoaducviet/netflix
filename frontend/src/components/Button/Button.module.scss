@@ -20,10 +20,19 @@
             width: 2.4rem;
         }
     }
+    .right-icon{
+        display: inline-flex;
+        align-items: center;
+        margin-left: 0.5rem;
+        svg{
+            height: 24px;
+            width: 24px;
+        }
+    }
 }
 
 .content {
-    display: inline-block;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-family);
@@ -55,10 +64,12 @@
 .signin {
     display: flex;
     width: 100%;
+    color: var(--default-text-color);
     background-color: var(--signin);
     border-color: black;
     border-radius: 3px;
     padding: 6px 16px;
+    margin: 0;
     .content {
         font-size: 16px;
     }
@@ -74,6 +85,7 @@
     border-color: black;
     border-radius: 3px;
     padding: 6px 16px;
+    margin: 0;
 
     .content {
         font-size: 16px;
@@ -81,5 +93,24 @@
 
     &:hover {
         background-color: var(--gray-hover);
+    }
+}
+
+.getstarted {
+    display: flex;
+    width: 100%;
+    color: var(--default-text-color-hover);
+    background-color: var(--signin);
+    border-color: black;
+    border-radius: 3px;
+    padding: 6px 16px;
+    margin: 0;
+    .content {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    &:hover {
+        background-color: var(--signin-hover);
     }
 }

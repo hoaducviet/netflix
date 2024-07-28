@@ -1,4 +1,5 @@
 const routes = {
+    intro: '/',
     login: '/login',
     
     home: '/browse',

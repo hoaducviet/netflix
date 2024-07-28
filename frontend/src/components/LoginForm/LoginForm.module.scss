@@ -38,12 +38,13 @@
         .form-text {
             display: flex;
             justify-content: center;
-            margin-bottom: 16px;
+            margin: 16px 0;
         }
 
         .form-forgot-text {
             display: flex;
             justify-content: center;
+            margin-top: 16px;
 
             &:hover {
                 text-decoration: underline;

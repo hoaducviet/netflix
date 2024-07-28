@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
@@ -22,6 +21,7 @@ function Button({ item }) {
             <div className={cx('content')}>
                 <span>{item.content}</span>
             </div>
+            {!!item.rightIcon && <div className={cx('right-icon')}>{item.rightIcon}</div>}
         </Comp>
     );
 }

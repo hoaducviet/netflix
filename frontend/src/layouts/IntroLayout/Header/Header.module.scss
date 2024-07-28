@@ -43,8 +43,26 @@
             }
         }
         .item {
+            position: relative;
             display: inline-flex;
+            align-items: center;
+            justify-content: end;
             width: 70rem;
+            
+            .languages-box{
+                display: flex;
+                width: auto;
+                background-color: black;
+                border-radius: 1px solid var(--default-text-color);
+            }
+            .sigin-button {
+
+                display: flex;
+                margin-left: 1rem;
+                justify-content: end;
+                width: 100px;
+                height: auto;
+            }
         }
     }
 }
