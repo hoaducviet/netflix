@@ -1,0 +1,39 @@
+.container {
+    font-size: 16px;
+    color: var(--default-text-color-hover);
+    width: 100vw;
+    height: auto;
+    user-select: none;
+    .sub-header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        display: flex;
+        height: 136px;
+        padding: 68px 60px 0;
+        justify-content: start;
+        background-color: var(--default-background-color);
+        z-index: 99;
+
+        .title {
+            font-size: 2rem;
+        }
+    }
+
+    .content {
+        display: block;
+        padding-top: 136px;
+        margin-bottom: 5vw;
+
+        .movie-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: auto;
+            row-gap: 4vw;
+            margin-top: 3.5%;
+            padding: 0 60px;
+
+        }
+    }
+}

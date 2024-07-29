@@ -6,8 +6,6 @@ import SlideMovie from '~/components/SlideMovie';
 import Information from '~/components/Information';
 
 import icons from '~/assets/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7, fa8, fa9 } from '@fortawesome/free-solid-svg-icons';
 
 import { movies, moviesOrder } from '~/assets/data';
 

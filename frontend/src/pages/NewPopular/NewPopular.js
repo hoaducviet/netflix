@@ -3,9 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import SlideMovieOrder from '~/components/SlideMovieOrder';
 import SlideMovie from '~/components/SlideMovie';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7, fa8, fa9 } from '@fortawesome/free-solid-svg-icons';
-
 import { movies, moviesOrder } from '~/assets/data';
 
 import classNames from 'classnames/bind';
