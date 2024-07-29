@@ -73,7 +73,8 @@ function Watch() {
             ) : (
                 <ReactPlayer
                     ref={playerRef}
-                    url={`${API}/${movie.id}`}
+                    url={"http://127.0.0.1:11470/d48e44e1ec82a3631cd443209e58f8ebe7197ec6/0"}
+                    // url={`${API}/${movie.id}`}
                     playing={true}
                     controls={true}
                     width="100%"

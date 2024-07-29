@@ -5,9 +5,9 @@ const routes = {
     home: '/browse',
     tvshows: '/tvshows',
     movies: '/movies',
-    newpopular: '/new-popular',
+    newpopular: '/newpopular',
     mylist: '/mylist',
-    browsebylanguages: '/browse-by-languages',
+    browsebylanguages: '/browsebylanguages',
     watch: '/watch/:id',
     notfound: '*',
 };

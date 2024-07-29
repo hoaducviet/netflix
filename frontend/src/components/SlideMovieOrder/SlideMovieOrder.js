@@ -9,13 +9,10 @@ import CardMovieOrder from '~/components/CardMovieOrder';
 import classNames from 'classnames/bind';
 import styles from './SlideMovieOrder.module.scss';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-
 const cx = classNames.bind(styles);
-
 
 function CustomPrevArrow({ onClick }) {
     return (
@@ -33,7 +30,7 @@ function CustomNextArrow({ onClick }) {
     );
 }
 
-function SlideMovieOrder({ heading, movies }) {
+function SlideMovieOrder({ item }) {
     const settings = {
         className: 'center',
         centerMode: true,
@@ -45,17 +42,24 @@ function SlideMovieOrder({ heading, movies }) {
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,
     };
+    let Comp = 'div';
+    const props = {};
+
+    if (item.to) {
+        Comp = Link;
+        props.to = item.to;
+    }
 
     return (
         <div className={cx('container')}>
             <h2 className={cx('row-header')}>
-                <Link to="/movie" className={cx('more-row-header')}>
-                    <div className={cx('more-row-header-title')}>{heading}</div>
-                </Link>
+                <Comp {...props} className={cx('more-row-header')}>
+                    <div className={cx('more-row-header-title')}>{item.heading}</div>
+                </Comp>
             </h2>
             <div className={cx('row-slider')}>
                 <Slider {...settings}>
-                    {movies.map((movie, index) => {
+                    {item.data.map((movie, index) => {
                         return <CardMovieOrder key={index} movie={movie} className={cx('card')} />;
                     })}
                 </Slider>

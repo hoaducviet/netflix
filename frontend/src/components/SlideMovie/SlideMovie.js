@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -29,7 +30,7 @@ function CustomNextArrow({ onClick }) {
     );
 }
 
-function SlideMovie({ heading, movies }) {
+function SlideMovie({ item }) {
     const settings = {
         className: 'center',
         centerMode: true,
@@ -42,16 +43,24 @@ function SlideMovie({ heading, movies }) {
         nextArrow: <CustomNextArrow />,
     };
 
+    let Comp = 'div';
+    const props = {};
+
+    if (item.to) {
+        Comp = Link;
+        props.to = item.to;
+    }
+
     return (
         <div className={cx('container')}>
             <h2 className={cx('row-header')}>
-                <Link to="/movie" className={cx('more-row-header')}>
-                    <div className={cx('more-row-header-title')}>{heading}</div>
-                </Link>
+                <Comp {...props} className={cx('more-row-header')}>
+                    <div className={cx('more-row-header-title')}>{item.heading}</div>
+                </Comp>
             </h2>
             <div className={cx('row-slider')}>
                 <Slider {...settings}>
-                    {movies.map((movie, index) => {
+                    {item.data.map((movie, index) => {
                         return <CardMovie key={index} movie={movie} className={cx('card')} />;
                     })}
                 </Slider>

@@ -32,4 +32,4 @@ Country.plugin(mongooseDelete, {
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("genre", Country);
+module.exports = mongoose.model("country", Country);
