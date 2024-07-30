@@ -2,6 +2,7 @@ const routes = {
     intro: '/',
     login: '/login',
     
+    search: '/search',
     home: '/browse',
     tvshows: '/tvshows',
     movies: '/movies',

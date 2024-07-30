@@ -4,6 +4,7 @@ import Movies from '~/pages/Movies';
 import NewPopular from '~/pages/NewPopular';
 import MyList from '~/pages/MyList';
 import BrowseByLanguages from '~/pages/BrowseByLanguages';
+import Search from '~/pages/Search';
 
 import Intro from '~/pages/Intro';
 import Login from '~/pages/Login';
@@ -21,6 +22,7 @@ const publicRoutes = [
     { path: config.routes.newpopular, component: NewPopular },
     { path: config.routes.mylist, component: MyList },
     { path: config.routes.browsebylanguages, component: BrowseByLanguages },
+    { path: config.routes.search, component: Search },
 
     { path: config.routes.intro, component: Intro, layout: IntroLayout },
     { path: config.routes.login, component: Login, layout: LoginLayout },

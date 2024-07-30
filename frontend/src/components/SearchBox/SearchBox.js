@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import styles from './SearchBox.module.scss';
@@ -13,6 +14,9 @@ function SearchBox() {
     const [searchValue, setSearchValue] = useState('');
 
     const inputRef = useRef();
+    const searchInputRef = useRef();
+
+    const navigate = useNavigate();
 
     const handleSearch = () => {
         setIsSearched(true);
@@ -22,25 +26,29 @@ function SearchBox() {
     };
 
     const handleChange = (e) => {
-        setSearchValue(e.target.value);
+        const value = e.target.value;
+        setSearchValue(value);
+
+        if (value.trim() === '') {
+            navigate('/browse');
+        } else {
+            navigate(`/search?q=${value}`);
+        }
     };
 
     const handleDelete = () => {
         setSearchValue('');
         inputRef.current.focus();
+        navigate('/browse');
     };
-    const searchInputRef = useRef();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
+            if (searchInputRef.current && !searchValue && !searchInputRef.current.contains(event.target)) {
                 setIsSearched(false);
-                setSearchValue('');
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };

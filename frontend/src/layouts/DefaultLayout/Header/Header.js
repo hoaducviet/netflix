@@ -25,10 +25,9 @@ function Header() {
                     <div className={cx('primary-navigation')}>
                         {config.navlinks.map((navlink, index) => {
                             return (
-                                <div className={cx('navigation-tab')}>
+                                <div key={index} className={cx('navigation-tab')}>
                                     <Link
                                         to={navlink.path}
-                                        key={index}
                                         className={cx('text-navigation', { active: isChoose === index })}
                                         onClick={() => setIsChoose(index)}
                                     >
