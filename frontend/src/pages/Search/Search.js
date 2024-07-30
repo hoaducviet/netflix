@@ -4,8 +4,6 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useDebounce } from '~/hooks';
 import * as searchSevice from '~/services/searchService';
 
-import { movies } from '~/assets/data';
-
 import CardMovie from '~/components/CardMovie';
 
 import classNames from 'classnames/bind';

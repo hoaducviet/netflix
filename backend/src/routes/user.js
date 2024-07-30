@@ -1,12 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
+const MediaController = require("../controllers/user/MediaController");
 const HomeController = require("../controllers/user/HomeController");
 const TVShowsController = require("../controllers/user/TVShowsController");
 const MoviesController = require("../controllers/user/MoviesController");
 const NewPopularController = require("../controllers/user/NewPopularController");
 const MyListController = require("../controllers/user/MyListController");
 const BrowsebyLanguagesController = require("../controllers/user/BrowsebyLanguagesController");
+
+//Media
+router.get("/media/:id", MediaController.getMediabyId);
+
+
 
 //Home
 

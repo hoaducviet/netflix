@@ -5,9 +5,9 @@ const path = require("path");
 const axios = require("axios");
 
 const videoFileMap = {
-  avenger: "./videos/avenger.mp4",
-  spider: "./videos/spider.mp4",
-  cdn: "./videos/cdn.mp4",
+  alien: "./videos/alien.mp4",
+  captain: "./videos/captain.mp4",
+  deadpool: "./videos/deadpool.mp4",
 };
 
 const imageFileMap = {

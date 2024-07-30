@@ -1,6 +1,10 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+
+import * as MediaSevice from '~/services/MediaService';
+
+import medias from '~/assets/medias';
 
 import classNames from 'classnames/bind';
 import styles from './Watch.module.scss';
@@ -8,22 +12,30 @@ import styles from './Watch.module.scss';
 const cx = classNames.bind(styles);
 
 function Watch() {
-    const { id } = useParams();
+    const [media, setMedia] = useState(null);
+    const [isIntroPlaying, setIsIntroPlaying] = useState(true);
+    const [isPause, setIsPause] = useState(false);
 
     const API = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS;
 
     const playerRef = useRef();
-    const [isIntroPlaying, setIsIntroPlaying] = useState(true);
-    const [isPause, setIsPause] = useState(false);
+    const overlayRef = useRef();
 
-    const Urls1 = ['/media/intro.mp4'];
+    const { id } = useParams();
 
-    const movie = {
-        id: 'spider',
-        title: 'Avengers InfinityWar',
-        image: 'avengers',
-        author: 'viethoaduc',
-    };
+    useEffect(() => {
+        if (!isIntroPlaying && playerRef.current) {
+            playerRef.current.seekTo(0); // Đặt video về đầu khi component được render
+        }
+    }, [isIntroPlaying]);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            const res = await MediaSevice.getMediaById(id);
+            setMedia(res);
+        };
+        fetchAPI();
+    }, [id]);
 
     const handlePlay = () => {
         setIsPause(false);
@@ -35,59 +47,46 @@ function Watch() {
         setIsPause(false);
         playerRef.current.getInternalPlayer().play();
     };
-    const handleEnterFullscreen = () => {
-        if (playerRef.current) {
-            const player = playerRef.current.getInternalPlayer();
-            if (player) {
-                if (player.requestFullscreen) {
-                    player.requestFullscreen();
-                } else if (player.mozRequestFullScreen) {
-                    // Firefox
-                    player.mozRequestFullScreen();
-                } else if (player.webkitRequestFullscreen) {
-                    // Chrome, Safari and Opera
-                    player.webkitRequestFullscreen();
-                } else if (player.msRequestFullscreen) {
-                    // IE/Edge
-                    player.msRequestFullscreen();
-                }
-            }
-        }
-    };
 
     return (
         <div className={cx('video-wrapper')}>
-            {isIntroPlaying ? (
-                <ReactPlayer
-                    ref={playerRef}
-                    url={Urls1}
-                    playing={true}
-                    controls={false}
-                    width="100%"
-                    height="100%"
-                    muted={false}
-                    onEnded={() => {
-                        setIsIntroPlaying(false);
-                    }}
-                />
-            ) : (
-                <ReactPlayer
-                    ref={playerRef}
-                    url={"http://127.0.0.1:11470/d48e44e1ec82a3631cd443209e58f8ebe7197ec6/0"}
-                    // url={`${API}/${movie.id}`}
-                    playing={true}
-                    controls={true}
-                    width="100%"
-                    height="100%"
-                    muted={false}
-                    playbackRate={1}
-                    onPlay={handlePlay}
-                    onPause={handlePause}
-                />
-            )}
+            <div className={cx('video')}>
+                {isIntroPlaying ? (
+                    <ReactPlayer
+                        ref={playerRef}
+                        url={medias.videointro}
+                        playing={true}
+                        controls={false}
+                        width="100%"
+                        height="100%"
+                        muted={false}
+                        onEnded={() => {
+                            setIsIntroPlaying(false);
+                        }}
+                    />
+                ) : (
+                    <ReactPlayer
+                        ref={playerRef}
+                        url={`${API}/${media.video}`}
+                        playing={!isPause}
+                        controls={true}
+                        width="100%"
+                        height="100%"
+                        muted={false}
+                        playbackRate={1}
+                        onPlay={handlePlay}
+                        onPause={handlePause}
+                    />
+                )}
+            </div>
             {isPause && (
-                <div className={cx('overlay')} onClick={handleOverlayClick}>
-                    {/* <img src="/logo192.png" alt="logo" className={cx('overlay-image')}/> */}
+                <div ref={overlayRef} className={cx('overlay')} onClick={handleOverlayClick}>
+                    <div className={cx('information')}>
+                        <p className={cx('title')}>{media.title}</p>
+                        <p className={cx('detail')}>{media.detail}</p>
+                    </div>
+                    <img src="/logo192.png" alt="logo" className={cx('overlay-image')} />
+                    <p className={cx('pause')}>Pause</p>
                 </div>
             )}
         </div>

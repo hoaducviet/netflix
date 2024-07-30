@@ -135,11 +135,11 @@ function Home() {
                             <ReactPlayer
                                 className={cx('video-wrapper')}
                                 ref={player}
-                                url={`${API}/cdn`}
+                                url={`${API}/captain`}
                                 playing={playing}
                                 width="100%"
                                 height="100%"
-                                muted={true}
+                                muted={false}
                                 onEnded={handleEnded}
                             />
                         )}

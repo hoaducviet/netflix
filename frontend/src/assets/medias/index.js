@@ -1,4 +1,5 @@
 const medias = {
+    videointro: require('./videointro.mp4'),
     tv: require('./videotv.mp4'),
     moviephone: require('./movie.png'),
     download: require('./downloadicon.gif'),
