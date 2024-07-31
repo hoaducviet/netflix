@@ -6,9 +6,12 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const Media = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    title: { type: String, unique: true, required: true, maxLength: 255 },
+    detail: { type: String, required: true, maxLength: 255 },
+    label: { type: String, required: true, maxLength: 20 },
+    videoURL: { type: String, required: true, maxLength: 255 },
+    trailerURL: { type: String, required: true, maxLength: 255 },
+    imageURL: { type: String, required: true, maxLength: 255 },
   },
   {
     timestamps: true,

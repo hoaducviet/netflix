@@ -7,9 +7,8 @@ mongoose.plugin(slug);
 
 const MyList = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    idUser: { type: String, required: true },
+    idMedia: { type: String, required: true },
   },
   {
     timestamps: true,
