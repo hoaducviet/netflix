@@ -123,37 +123,6 @@ const movies = [
 ];
 
 class SiteController {
-  signIn(req, res) {
-    res.render("sign-in");
-  }
-
-  async signUp(req, res) {
-    try {
-      const email = req.body.email;
-      const password = req.body.password;
-
-      if (!email || !password) {
-        return res.status(400).json({ message: "Email and password are required" });
-      }
-
-      const existingAccount = await Account.findOne({ email: email });
-      if (existingAccount) {
-        return res.status(409).json({ message: "Email already exists" });
-      }
-
-      const newAccount = new Account({
-        email: email,
-        password: password,
-      });
-      await newAccount.save();
-      res.status(201).json({ message: "User created successfully", user: newAccount });
-
-    } catch (error) {
-      console.error("Error creating user:", error.message);
-      res.status(500).json({ message: "Internal server error" });
-    }
-  }
-
   search(req, res) {
     const { q } = req.query;
 
@@ -161,6 +130,5 @@ class SiteController {
     res.send(movies);
   }
 }
-
 
 module.exports = new SiteController();

@@ -6,9 +6,6 @@ const MediaController = require("../controllers/MediaController");
 const MyListController = require("../controllers/MyListController");
 
 
-//Media
-router.get("/media/byid/:id", MediaController.getMediabyId);
-router.get("/media/all", MediaController.getMediaAll);
 
 //Home
 
