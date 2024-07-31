@@ -19,7 +19,7 @@ class MediaController {
       return res.status(200).json(mutipleMongooseToObject(results));
     } catch (error) {
       console.error("Error retrieving media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -36,7 +36,7 @@ class MediaController {
       return res.status(200).json(mongooseToObject(result));
     } catch (error) {
       console.error("Error retrieving media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -81,14 +81,14 @@ class MediaController {
         });
       }
 
-      const result = await Media.insertMany(validMedia);
-      res.status(201).json({
+      const results = await Media.insertMany(validMedia);
+      return res.status(201).json({
         message: "Media data added successfully",
-        data: mutipleMongooseToObject(result),
+        data: mutipleMongooseToObject(results),
       });
     } catch (error) {
       console.error("Error insert media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -116,13 +116,13 @@ class MediaController {
       });
 
       await newMedia.save();
-      res.status(201).json({
+      return res.status(201).json({
         message: "Media added successfully",
         media: newMedia,
       });
     } catch (error) {
       console.error("Error insert media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -141,14 +141,14 @@ class MediaController {
         return res.status(404).json({ message: "Media not found" });
       }
 
-      res.status(200).json(mongooseToObject(result));
+      return res.status(200).json(mongooseToObject(result));
     } catch (error) {
       console.error("Error edit media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
-  //Delete Media
 
+  //Delete Media
   async deleteMedia(req, res) {
     try {
       const id = req.params.id;

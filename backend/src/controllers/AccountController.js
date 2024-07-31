@@ -6,29 +6,6 @@ const {
   mongooseToObject,
 } = require("../utils/mongoose");
 class AccountController {
-  //Get All User in Account
-  async getUserAll(req, res) {
-    try {
-      const idAccount = req.params.id;
-
-      //Kiểm tra trường dữ liệu nhập vào
-      if (!idAccount) {
-        return res.status(400).json({ message: "Id account are required" });
-      }
-
-      //Tìm thông tin Users theo ID Account
-      const results = await User.find({ idAccount: idAccount });
-      if (!results.length) {
-        return res.status(404).json({ message: "User is null" });
-      }
-
-      return res.status(200).json(mutipleMongooseToObject(results));
-    } catch (error) {
-      console.error("Error retrieving media:", error.message);
-      return res.status(500).json({ message: "Internal server error" });
-    }
-  }
-
   //Sign In Account
   async signIn(req, res) {
     try {

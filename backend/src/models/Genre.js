@@ -6,9 +6,7 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const Genre = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    name: { type: String, unique: true, required: true },
   },
   {
     timestamps: true,

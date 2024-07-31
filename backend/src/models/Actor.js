@@ -6,9 +6,10 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const Actor = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    name: { type: String, required: true },
+    age: { type: Number },
+    national: { type: String, maxLength: 20 },
+    imageURL: { type: String},
   },
   {
     timestamps: true,

@@ -8,6 +8,29 @@ const {
 } = require("../utils/mongoose");
 
 class UserController {
+  //Get All User in Account
+  async getUserAllbyAccount(req, res) {
+    try {
+      const idAccount = req.params.idaccount;
+
+      //Kiểm tra trường dữ liệu nhập vào
+      if (!idAccount) {
+        return res.status(400).json({ message: "Id account are required" });
+      }
+
+      //Tìm thông tin Users theo ID Account
+      const results = await User.find({ idAccount: idAccount });
+      if (!results.length) {
+        return res.status(404).json({ message: "User is null" });
+      }
+
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error retrieving media:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
   //GET User By Id
   async getUserbyId(req, res) {
     try {
@@ -105,7 +128,6 @@ class UserController {
   }
 
   //Delete User
-
   async deleteUser(req, res) {
     try {
       const id = req.params.id;
@@ -119,7 +141,7 @@ class UserController {
       const result = await User.findByIdAndDelete(id);
 
       if (!result) {
-        return res.status(404).json({ message: "User doesn't exist" });
+        return res.status(404).json({ message: "User doesnt exist" });
       }
 
       return res.status(200).json(mongooseToObject(result));
