@@ -1,7 +1,7 @@
 import Tippy from '@tippyjs/react/headless';
 
-import AccountItem from './AccountItem';
-import OptionItem from './OptionItem';
+import OptionItem from '../OptionItem';
+import AccountItem from '../AccountItem';
 
 import classNames from 'classnames/bind';
 import styles from './AccountMenu.module.scss';

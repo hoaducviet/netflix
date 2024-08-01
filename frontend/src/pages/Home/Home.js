@@ -109,9 +109,10 @@ const slideContainer = [
 
 const API = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS;
 function Home() {
+    const [playing, setPlaying] = useState(false);
+
     const movieCurrent = movies[Math.floor(Math.random() * movies.length)];
 
-    const [playing, setPlaying] = useState(false);
     const player = useRef();
 
     useEffect(() => {
@@ -139,7 +140,7 @@ function Home() {
                                 playing={playing}
                                 width="100%"
                                 height="100%"
-                                muted={false}
+                                muted={true}
                                 onEnded={handleEnded}
                             />
                         )}
