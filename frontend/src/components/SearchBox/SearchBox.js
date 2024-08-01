@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import styles from './SearchBox.module.scss';
@@ -17,6 +17,7 @@ function SearchBox() {
     const searchInputRef = useRef();
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSearch = () => {
         setIsSearched(true);
@@ -41,6 +42,16 @@ function SearchBox() {
         inputRef.current.focus();
         navigate('/browse');
     };
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const query = params.get('q');
+
+        if (query) {
+            setSearchValue(query);
+            setIsSearched(true)
+        }
+    }, [location.search]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {

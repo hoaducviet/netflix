@@ -64,11 +64,23 @@
     }
 }
 
-.title-error{
+.text-container {
     display: flex;
+    justify-content: center;
+    margin-bottom: 5vw;
+    padding-top: 136px;
     width: 100vw;
-    height: 45vh;
-    font-size: 48px;
-    font-weight: 900;
+    height: 100vh;
+    font-size: 0.75vw;
+    font-weight: 400;
 
+    .text-error {
+        display: flex;
+        flex-direction: column;
+
+        .title-error {
+            display: flex;
+            justify-content: start;
+        }
+    }
 }

@@ -89,7 +89,7 @@ class UserController {
       const newUser = new User(data);
 
       const result = await newUser.save();
-      res.status(201).json({
+      return res.status(201).json({
         message: "User created successfully",
         media: mongooseToObject(result),
       });

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const SiteController = require("../controllers/SiteController");
 const MediaController = require("../controllers/MediaController");
 const MyListController = require("../controllers/MyListController");
 const AccountController = require("../controllers/AccountController");
@@ -13,6 +14,9 @@ const CountryController = require("../controllers/CountryController");
 const HistoryController = require("../controllers/HistoryController");
 const AvatarController = require("../controllers/AvatarController");
 const MediaActorController = require("../controllers/MediaActorController");
+
+//Site
+router.get("/search", SiteController.search);
 
 // Media
 router.get("/media/byid/:id", MediaController.getMediabyId);
@@ -70,10 +74,15 @@ router.get("/avatar/all", AvatarController.getAvatarAll);
 router.post("/avatar/insertmany", AvatarController.insertManyAvatar);
 
 //MediaActor
-router.get("/mediaactor/:idmedia", MediaActorController.getMediaActorAllbyIdMedia);
+router.get(
+  "/mediaactor/:idmedia",
+  MediaActorController.getMediaActorAllbyIdMedia
+);
 router.post("/mediaactor/insertone", MediaActorController.insertOneMediaActor);
-router.post("/mediaactor/insertmany", MediaActorController.insertManyMediaActor);
-
+router.post(
+  "/mediaactor/insertmany",
+  MediaActorController.insertManyMediaActor
+);
 
 //Actor
 router.get("/actor/byid/:id", ActorController.getActorbyId);
@@ -87,3 +96,39 @@ router.post("/language/insertone", LanguageController.insertOneLanguage);
 router.post("/language/insertmany", LanguageController.insertManyLanguage);
 
 module.exports = router;
+
+
+
+
+
+//Home
+
+// //TV Shows
+// router.get("/tvshows/genre/:id", TVShowsController.getTVShowsbyGenre);
+
+// //Movies
+// router.get("/movies/genre/:id", MoviesController.getMoviesbyGenre);
+// router.get("/movies/nextwatch", MoviesController.getMoviesNextWatch);
+// router.get("/movies/watching", MoviesController.getMoviesWatching);
+
+// //NewPopular
+// router.get("/new/netflix", NewPopularController.getNewonNetflix);
+// router.get(
+//   "/new/top10/tvshows/:id",
+//   NewPopularController.getTop10TVShowsTodaybyCountry
+// );
+// router.get(
+//   "/new/top10/movies/:id",
+//   NewPopularController.getTop10MoviesTodaybyCountry
+// );
+// router.get("/new/top10/nextweek", NewPopularController.getComingNextWeek);
+// router.get("/new/top10/worththewait", NewPopularController.getWorththeWait);
+// router.get("/new/top10/thisweek", NewPopularController.getComingThisWeek);
+
+// //My List
+// router.get("/mylist", MyListController.getMyListAll);
+
+// //BrowsebyLanguagesController
+// router.get("/original/:id", BrowsebyLanguagesController.getMoviesbyOriginal);
+// router.get("/audio/:id", BrowsebyLanguagesController.getMoviesbyAudio);
+// router.get("/subtitles/:id", BrowsebyLanguagesController.getMoviesbySubtitles);

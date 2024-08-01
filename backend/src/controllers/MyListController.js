@@ -14,13 +14,13 @@ class MyListController {
       const results = await MyList.find();
 
       if (!results.length) {
-        res.status(404).json({ message: "Media not found" });
+        return res.status(404).json({ message: "Media not found" });
       }
 
       return res.status(200).json(mutipleMongooseToObject(results));
     } catch (error) {
       console.error("Error retrieving media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -47,12 +47,12 @@ class MyListController {
       });
 
       await newMyList.save();
-      res.status(201).json({
+      return res.status(201).json({
         message: "Media added successfully",
       });
     } catch (error) {
       console.error("Error insert media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 
@@ -73,10 +73,10 @@ class MyListController {
         idMedia: idMedia,
       });
 
-      res.status(200).json(result);
+      return res.status(200).json(result);
     } catch (error) {
       console.error("Error edit media:", error.message);
-      res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 }

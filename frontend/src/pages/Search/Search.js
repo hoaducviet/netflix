@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useDebounce } from '~/hooks';
 import * as searchSevice from '~/services/searchService';
@@ -47,6 +47,13 @@ const list = [
     },
 ];
 
+const suggest = [
+    { decrible: 'Try different keywords' },
+    { decrible: 'Looking for a movie or TV show?' },
+    { decrible: 'Try using a movie, TV show title, an actor or director' },
+    { decrible: 'Try a genre, like comedy, romance, sports, or drama' },
+];
+
 function Search() {
     const [value, setValue] = useState('');
     const [result, setResult] = useState([]);
@@ -79,8 +86,14 @@ function Search() {
         <div className={cx('container')}>
             <div className={cx('sub-header')}></div>
             {!result.length ? (
-                <div className={cx('content')}>
-                    <p className={cx('title-error')}>Not Found The Movies</p>
+                <div className={cx('text-container')}>
+                    <div className={cx('text-error')}>
+                        <p className={cx('title-error')}>{`Your search for "${value}" did not have any matches`}</p>
+                        <p className={cx('title-error')}>Suggestions:</p>
+                        {suggest.map((item) => {
+                            return <li>{item.decrible}</li>;
+                        })}
+                    </div>
                 </div>
             ) : (
                 <div className={cx('content')}>

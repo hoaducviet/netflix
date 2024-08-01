@@ -1,4 +1,3 @@
-const { mongo } = require("mongoose");
 const Media = require("../models/Media");
 
 const {

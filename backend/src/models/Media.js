@@ -18,6 +18,11 @@ const Media = new Schema(
   }
 );
 
+Media.index(
+  { title: "text", detail: "text" },
+  { weights: { title: 10, detail: 1 } }
+);
+
 //Custom query helpers
 Media.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {

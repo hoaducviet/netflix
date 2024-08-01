@@ -41,7 +41,7 @@ const accountItems = [
 ];
 
 function DefaultLayout({ children }) {
-    const [idChoose, setIdChoose] = useState(null);
+    const [idChoose, setIdChoose] = useState(true);
 
     return (
         <div className={cx('container')}>
