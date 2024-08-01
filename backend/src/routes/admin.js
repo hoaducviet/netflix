@@ -9,6 +9,10 @@ const NotificationController = require("../controllers/NotificationController");
 const LanguageController = require("../controllers/LanguageController");
 const GenreController = require("../controllers/GenreController");
 const ActorController = require("../controllers/ActorController");
+const CountryController = require("../controllers/CountryController");
+const HistoryController = require("../controllers/HistoryController");
+const AvatarController = require("../controllers/AvatarController");
+const MediaActorController = require("../controllers/MediaActorController");
 
 // Media
 router.get("/media/byid/:id", MediaController.getMediabyId);
@@ -45,22 +49,39 @@ router.post(
 );
 
 //History
+router.get("/history/:iduser", HistoryController.getHistoryAllbyIdUser);
+router.post("/history/insertone", HistoryController.insertOneHistory);
+router.post("/history/insertmany", HistoryController.insertManyHistory);
 
 //Genre
+router.get("/genre/byid/:id", GenreController.getGenrebyId);
 router.get("/genre/all", GenreController.getGenreAll);
 router.post("/genre/insertone", GenreController.insertOneGenre);
 router.post("/genre/insertmany", GenreController.insertManyGenre);
 
 //Country
+router.get("/country/byid/:id", CountryController.getCountrybyId);
+router.get("/country/all", CountryController.getCountryAll);
+router.post("/country/insertmany", CountryController.insertManyCountry);
 
 //Avatar
+router.get("/avatar/byid/:id", AvatarController.getAvatarbyId);
+router.get("/avatar/all", AvatarController.getAvatarAll);
+router.post("/avatar/insertmany", AvatarController.insertManyAvatar);
+
+//MediaActor
+router.get("/mediaactor/:idmedia", MediaActorController.getMediaActorAllbyIdMedia);
+router.post("/mediaactor/insertone", MediaActorController.insertOneMediaActor);
+router.post("/mediaactor/insertmany", MediaActorController.insertManyMediaActor);
+
 
 //Actor
-router.get("/actor/:id", ActorController.getActorbyId);
+router.get("/actor/byid/:id", ActorController.getActorbyId);
 router.get("/actor/all", ActorController.getActorAll);
 router.post("/actor/insertmany", ActorController.insertManyActor);
 
 //Language
+router.get("/language/byid/:id", LanguageController.getLanguagebyId);
 router.get("/language/all", LanguageController.getLanguageAll);
 router.post("/language/insertone", LanguageController.insertOneLanguage);
 router.post("/language/insertmany", LanguageController.insertManyLanguage);

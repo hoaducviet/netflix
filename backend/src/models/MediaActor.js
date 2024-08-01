@@ -4,11 +4,12 @@ const slug = require("mongoose-slug-generator");
 const mongooseDelete = require("mongoose-delete");
 
 mongoose.plugin(slug);
-const Country = new Schema(
+
+const MediaActor = new Schema(
   {
-    name: { type: String, required: true },
-    idLanguage: { type: String },
-    continental: { type: String, required: true },
+    idMedia: { type: String, required: true },
+    idActor: { type: String, required: true },
+    role: { type: String },
   },
   {
     timestamps: true,
@@ -16,7 +17,7 @@ const Country = new Schema(
 );
 
 //Custom query helpers
-Country.query.sortable = function (req) {
+MediaActor.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {
     const isValidType = ["asc", "desc"].includes(req.query.type);
     return this.sort({
@@ -27,9 +28,9 @@ Country.query.sortable = function (req) {
 };
 
 //Add Plugin
-Country.plugin(mongooseDelete, {
+MediaActor.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("country", Country);
+module.exports = mongoose.model("mediaactor", MediaActor);

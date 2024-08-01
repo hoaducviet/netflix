@@ -6,6 +6,24 @@ const {
 } = require("../utils/mongoose");
 
 class GenreController {
+  //Get Genre By Id
+  async getGenrebyId(req, res) {
+    try {
+      const id = req.params.id;
+
+      //Tìm thông tin Genre
+      const result = await Genre.findById(id);
+      if (!result) {
+        return res.status(404).json({ message: "Genre is null" });
+      }
+
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error genre:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
   //Get All Genre
   async getGenreAll(req, res) {
     try {

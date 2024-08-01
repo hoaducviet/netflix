@@ -6,9 +6,8 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const History = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    idMedia: { type: String, required: true },
+    idUser: { type: String, required: true },
   },
   {
     timestamps: true,

@@ -6,7 +6,7 @@ const {
 } = require("../utils/mongoose");
 
 class ActorController {
-  //Get All Actor
+  //Get Actor By Id
   async getActorbyId(req, res) {
     try {
       const id = req.params.id;

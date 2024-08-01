@@ -6,9 +6,9 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const Avatar = new Schema(
   {
-    account: { type: String, required: true },
-    password: { type: String, required: true, maxLength: 20 },
-    role: { type: Number },
+    name: { type: String, required: true },
+    idMedia: { type: String },
+    imageURL: { type: String, required: true },
   },
   {
     timestamps: true,

@@ -6,6 +6,24 @@ const {
 } = require("../utils/mongoose");
 
 class LanguageController {
+  //Get Language By Id
+  async getLanguagebyId(req, res) {
+    try {
+      const id = req.params.id;
+
+      //Tìm thông tin Language
+      const result = await Language.findById(id);
+      if (!result) {
+        return res.status(404).json({ message: "Language is null" });
+      }
+
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error language:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
   //Get All Language
   async getLanguageAll(req, res) {
     try {
