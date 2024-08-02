@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function CardMovie({ movie }) {
     
     return (
-        <Link to={`/watch/${movie.id}`} className={cx('container')}>
+        <Link to={`/watch/${movie._id}`} className={cx('container')}>
             <div className={cx('image-movie')}>
                 <img src={movie.imageURL} alt={movie.title} className={cx('image')} />
             </div>

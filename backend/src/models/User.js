@@ -7,7 +7,7 @@ mongoose.plugin(slug);
 
 const User = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, maxLength: 20 },
     idAccount: { type: String, required: true },
     idAvatar: { type: String },
     role: { type: String, default: "Adult" },

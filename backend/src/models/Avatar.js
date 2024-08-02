@@ -8,7 +8,7 @@ const Avatar = new Schema(
   {
     name: { type: String, required: true },
     idMedia: { type: String },
-    imageURL: { type: String, required: true },
+    imageURL: { type: String, unique: true, required: true },
   },
   {
     timestamps: true,

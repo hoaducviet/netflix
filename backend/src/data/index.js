@@ -1,112 +1,62 @@
 const movies = [
   {
-    id: 1,
     title: "Avengers Infinity War",
     detail: "This is detail of fiml Avengers Infinity War",
     label: "18+",
-    videoURL: "/media/AvengersInfinityWar.mp4",
+    videoURL: "/videos/captain",
+    trailerURL: "/videos/captain",
     imageURL:
-      "https://www.usatoday.com/gcdn/presto/2022/10/14/USAT/89e7eee0-28ac-403f-acfb-a3bd74a01790-avengers-infinity-war-1200-1200-675-675-crop-000000.jpeg?width=1200&disable=upscale&format=pjpg&auto=webp",
+      "https://wallpapers.com/images/hd/4k-avengers-artwork-6mfog3k2t9nhwtcw.jpg",
   },
   {
-    id: 2,
-    title: "Spider Man 2",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
+    title: "Avatar: The Way of Water",
+    detail:
+      "The Way of Water is the sequel to the 2009 film Avatar, and the second installment in the Avatar series of five films",
+    videoURL: "/videos/deadpool",
+    trailerURL: "/videos/captain",
 
-    videoURL: "/media/SpiderMan2.mp4",
-    imageURL:
-      "https://images.moviesanywhere.com/980ffe0de224551b0dd5db82d98ac700/112b14f0-2f94-4dab-a684-aeba4d6b3463.jpg?w=2560&r=16x9",
+    imageURL: "https://i.ebayimg.com/images/g/JkwAAOSw5atb5FWM/s-l1600.jpg",
   },
   {
     title: "Doctor John",
     detail: "This is detail of fiml Avengers Infinity War",
     label: "18+",
+    videoURL: "/videos/deadpool",
+    trailerURL: "/videos/captain",
 
-    videoURL: "/media/AvengersInfinityWar.mp4",
     imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABfWwgDOzA_J3wgc2d0D6lWjZmX8zDY2zT2gabozKJbHCVkZfk87Nrczdt-mtKr5GTImC5Y08Bp4Y4ihguTkXFqb8PNppOmDm5jA.webp?r=bea",
+      "https://cms.dmpcdn.com/movie/2022/07/22/3ecbee50-0996-11ed-9f5a-53fb40ff55ce_webp_original.jpg",
   },
   {
     title: "Journey 2: The Mysterious Island",
     detail: "This is detail of fiml Avengers Infinity War",
     label: "18+",
+    videoURL: "/videos/deadpool",
+    trailerURL: "/videos/captain",
 
-    videoURL: "/media/SpiderMan2.mp4",
     imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABbxvfsLboJzdI4SRrH8GcJLg3NmfvbWyn_-z8hvRMJdV4mis01Kx3G7b30gONkjvF2p7P6VlO0Q_uJNQMwqJfUvz9EbuFAz96RnNtKMx9AOWJPECan9GGKinVTiozIMVTS5Xy5Fi91AtbuAtnlWRbJPJd4XcCbgaLys.webp?r=4be",
+      "https://www.reellifewithjane.com/wp-content/uploads/2012/02/journey-2-mysterious-island-poster-2.jpg",
   },
   {
     title: "Rampage",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
+    detail:
+      "A rampage is when a group of people is destructive and out of control, like an angry, violent riot following an unpopular political decision.",
+    label: "16+",
+    videoURL: "/videos/captain",
+    trailerURL: "/videos/captain",
 
-    videoURL: "/media/AvengersInfinityWar.mp4",
     imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABRHOKwoq0s_DsVFV6kScYirjOVungcQaQ59yrRIdHPwanSaYZdB6CD7feAAoC-2Th5A-VbqMKBRO9wNs0feExbDiF4GkYVrPgIuF2y8ygNIMrUIyH-vsLD1a55DA0rbxlOYMpf7TC0lvZHDicLvMzsv0HllO1GyJJVk.webp?r=bdb",
+      "https://images.squarespace-cdn.com/content/v1/50a838b5e4b0d63ce68736ac/1525994962691-3ABI9ETUOKFM9LWWALEK/image0.jpg?format=2500w",
   },
   {
     title: "Top Gun: Maverrick",
-    detail: "This is detail of fiml Avengers Infinity War",
+    detail:
+      "Top Gun is a 1986 American action drama film directed by Tony Scott and produced by Don Simpson and Jerry Bruckheimer, with distribution by Paramount",
     label: "18+",
+    videoURL: "/videos/alien",
+    trailerURL: "/videos/captain",
 
-    videoURL: "/media/SpiderMan2.mp4",
-    imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABTTCYivGvNYFZphZZRuv2y9me_OrNOZPa-PSxsFCdwZ0R9wx1Elbh7VDdKWUFY3t5Tqd40Nso7whR6Xi2FJoHWnjMnSPxlLrGEs.webp?r=67e",
-  },
-  {
-    title: "Avengers Infinity War",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/AvengersInfinityWar.mp4",
-    imageURL:
-      "https://www.usatoday.com/gcdn/presto/2022/10/14/USAT/89e7eee0-28ac-403f-acfb-a3bd74a01790-avengers-infinity-war-1200-1200-675-675-crop-000000.jpeg?width=1200&disable=upscale&format=pjpg&auto=webp",
-  },
-  {
-    title: "Spider Man 2",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/SpiderMan2.mp4",
-    imageURL:
-      "https://images.moviesanywhere.com/980ffe0de224551b0dd5db82d98ac700/112b14f0-2f94-4dab-a684-aeba4d6b3463.jpg?w=2560&r=16x9",
-  },
-  {
-    title: "Doctor John",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/AvengersInfinityWar.mp4",
-    imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABfWwgDOzA_J3wgc2d0D6lWjZmX8zDY2zT2gabozKJbHCVkZfk87Nrczdt-mtKr5GTImC5Y08Bp4Y4ihguTkXFqb8PNppOmDm5jA.webp?r=bea",
-  },
-  {
-    title: "Journey 2: The Mysterious Island",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/SpiderMan2.mp4",
-    imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABbxvfsLboJzdI4SRrH8GcJLg3NmfvbWyn_-z8hvRMJdV4mis01Kx3G7b30gONkjvF2p7P6VlO0Q_uJNQMwqJfUvz9EbuFAz96RnNtKMx9AOWJPECan9GGKinVTiozIMVTS5Xy5Fi91AtbuAtnlWRbJPJd4XcCbgaLys.webp?r=4be",
-  },
-  {
-    title: "Rampage",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/AvengersInfinityWar.mp4",
-    imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABRHOKwoq0s_DsVFV6kScYirjOVungcQaQ59yrRIdHPwanSaYZdB6CD7feAAoC-2Th5A-VbqMKBRO9wNs0feExbDiF4GkYVrPgIuF2y8ygNIMrUIyH-vsLD1a55DA0rbxlOYMpf7TC0lvZHDicLvMzsv0HllO1GyJJVk.webp?r=bdb",
-  },
-  {
-    title: "Top Gun: Maverrick",
-    detail: "This is detail of fiml Avengers Infinity War",
-    label: "18+",
-
-    videoURL: "/media/SpiderMan2.mp4",
-    imageURL:
-      "https://occ-0-325-395.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABTTCYivGvNYFZphZZRuv2y9me_OrNOZPa-PSxsFCdwZ0R9wx1Elbh7VDdKWUFY3t5Tqd40Nso7whR6Xi2FJoHWnjMnSPxlLrGEs.webp?r=67e",
+    imageURL: "https://sdw.sony-asia.com/VN/UserImages/SVN/869_Topgunngang.jpg",
   },
 ];
 

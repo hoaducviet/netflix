@@ -10,6 +10,14 @@ const videoFileMap = {
   deadpool: "./videos/deadpool.mp4",
 };
 
+const avatarFileMap = {
+  avatar1: "./images/avatar1.png",
+  avatar2: "./images/avatar2.png",
+  avatar3: "./images/avatar3.png",
+  avatar4: "./images/avatar4.png",
+  avatar5: "./images/avatar5.png",
+}
+
 const imageFileMap = {
   logo: "./images/logo.png",
   intro: "./images/intro.gif",
@@ -63,6 +71,31 @@ app.get("/videos/:filename", async (req, res) => {
 app.get("/images/:filename", (req, res) => {
   const filename = req.params.filename;
   const filePath = imageFileMap[filename];
+
+  if (!filePath) {
+    return res.status(404).send("File not found");
+  }
+
+  const ext = path.extname(filePath).toLowerCase();
+  let contentType = "image/jpeg"; // Mặc định loại hình ảnh là jpeg
+
+  if (ext === ".png") {
+    contentType = "image/png";
+  } else if (ext === ".jpg" || ext === ".jpeg") {
+    contentType = "image/jpeg";
+  }
+
+  const head = {
+    "Content-Type": contentType,
+  };
+
+  res.writeHead(200, head);
+  fs.createReadStream(filePath).pipe(res);
+});
+
+app.get("/avatars/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filePath = avatarFileMap[filename];
 
   if (!filePath) {
     return res.status(404).send("File not found");

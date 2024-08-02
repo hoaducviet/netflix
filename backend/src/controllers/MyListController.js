@@ -8,13 +8,26 @@ const {
 } = require("../utils/mongoose");
 
 class MyListController {
-  //Get All MyList
-  async getMyListAll(req, res) {
+  //Get All MyList by ID
+  async getMyListbyIdUser(req, res) {
     try {
-      const results = await MyList.find();
+      const idUser = req.params.iduser;
 
-      if (!results.length) {
-        return res.status(404).json({ message: "Media not found" });
+      if (!idUser) {
+        return res.status(400).json({ message: "Id user is required" });
+      }
+
+      const list = await MyList.find({ idUser: idUser });
+      if (!list.length) {
+        return res.status(200).json([]);
+      }
+
+      const results = [];
+      for (let item of list) {
+        if (item.idMedia) {
+          const result = await Media.findById(item.idMedia);
+          results.push(result);
+        }
       }
 
       return res.status(200).json(mutipleMongooseToObject(results));
@@ -52,6 +65,57 @@ class MyListController {
       });
     } catch (error) {
       console.error("Error insert media:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+  // Post Many MyList
+  async insertManyMyList(req, res) {
+    try {
+      const mylistData = req.body;
+
+      if (!Array.isArray(mylistData)) {
+        return res.status(400).json({
+          message: "Invalid data format. Expected an array of User objects.",
+        });
+      }
+
+      const validMyList = [];
+      const errors = [];
+
+      for (let mylist of mylistData) {
+        if (!mylist.idUser || !mylist.idMedia) {
+          errors.push({ mylist, error: "Missing required fields" });
+          continue;
+        }
+
+        let existingMyList = await MyList.findOne({
+          idUser: mylist.idUser,
+          idMedia: mylist.idMedia,
+        });
+        if (existingMyList) {
+          errors.push({
+            mylist,
+            error: "MyList with this title already exists",
+          });
+          continue;
+        }
+        validMyList.push(mylist);
+      }
+
+      if (errors.length) {
+        return res.status(400).json({
+          message: "Some MyList items could not be added",
+          errors,
+        });
+      }
+
+      const results = await MyList.insertMany(validMyList);
+      return res.status(201).json({
+        message: "MyList data added successfully",
+        data: mutipleMongooseToObject(results),
+      });
+    } catch (error) {
+      console.error("Error insert User:", error.message);
       return res.status(500).json({ message: "Internal server error" });
     }
   }

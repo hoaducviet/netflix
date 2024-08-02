@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
-import * as MediaSevice from '~/services/MediaService';
+import * as MediaServices from   '~/services/MediaServices'
 
 import medias from '~/assets/medias';
 
@@ -11,12 +11,12 @@ import styles from './Watch.module.scss';
 
 const cx = classNames.bind(styles);
 
+const API = process.env.REACT_APP_API_SERVER_STREAM;
+
 function Watch() {
     const [media, setMedia] = useState(null);
     const [isIntroPlaying, setIsIntroPlaying] = useState(true);
     const [isPause, setIsPause] = useState(false);
-
-    const API = process.env.REACT_APP_API_SERVER_STREAM_VIDEOS;
 
     const playerRef = useRef();
     const overlayRef = useRef();
@@ -31,11 +31,11 @@ function Watch() {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const res = await MediaSevice.getMediaById(id);
+            const res = await MediaServices.getMediaById(id);
             setMedia(res);
         };
         fetchAPI();
-    }, [id]);
+    }, []);
 
     const handlePlay = () => {
         setIsPause(false);
@@ -47,6 +47,8 @@ function Watch() {
         setIsPause(false);
         playerRef.current.getInternalPlayer().play();
     };
+
+    const videoURL = media ? `${API}${media.videoURL}` : '';
 
     return (
         <div className={cx('video-wrapper')}>
@@ -67,7 +69,7 @@ function Watch() {
                 ) : (
                     <ReactPlayer
                         ref={playerRef}
-                        url={`${API}/${media.video}`}
+                        url={videoURL}
                         playing={!isPause}
                         controls={true}
                         width="100%"

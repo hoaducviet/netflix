@@ -22,8 +22,19 @@ router.get("/search", SiteController.search);
 router.post("/signin", AccountController.signIn);
 router.post("/signup", AccountController.signUp);
 
+//User
+router.post("/user/insertone", UserController.insertOneUser);
+router.post("/user/insertmany", UserController.insertManyUser);
 
+// Media
+router.get("/media/byid/:id", MediaController.getMediabyId);
 
+// My List
+router.get("/mylist/byiduser/:iduser", MyListController.getMyListbyIdUser);
+router.post("/mylist/insertone", MyListController.insertOneMyList);
+router.post("/mylist/insertmany", MyListController.insertManyMyList);
 
+//Avatar
+router.post("/avatar/insertmany", AvatarController.insertManyAvatar);
 
 module.exports = router;

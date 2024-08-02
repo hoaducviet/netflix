@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '~/components/Button';
@@ -12,7 +13,7 @@ const buttons = [
     {
         content: 'Sign In',
         color: 'signin',
-        to: '/browse',
+        to: '',
     },
     {
         content: 'Use a Sign-In Code',
@@ -22,6 +23,19 @@ const buttons = [
 ];
 
 function LoginForm() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailChange = async (e) => {
+        setEmail(e.target.value);
+    };
+    const handlePasswordChange = async (e) => {
+        setPassword(e.target.value);
+    };
+    const handleSubmit = async (e) => {
+        // e.preventDefault();
+        console.log(email, password);
+    };
     return (
         <div className={cx('container')}>
             <header className={cx('header')}>
@@ -29,12 +43,12 @@ function LoginForm() {
             </header>
             <form className={cx('form')}>
                 <div className={cx('form-email')}>
-                    <InputForm label={'Email or mobile number'}/>
+                    <InputForm value={email} onChange={handleEmailChange} label={'Email or mobile number'} />
                 </div>
                 <div className={cx('form-password')}>
-                    <InputForm label={'Password'}/>
+                    <InputForm value={password} onChange={handlePasswordChange} label={'Password'} />
                 </div>
-                <Button item={buttons[0]} className={cx('button')} />
+                <Button onClick={handleSubmit} item={buttons[0]} className={cx('button')} />
                 <p className={cx('form-text')}>OR</p>
                 <Button item={buttons[1]} className={cx('button')} />
                 <Link className={cx('form-forgot-text')}>

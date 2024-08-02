@@ -98,6 +98,54 @@ class UserController {
       return res.status(500).json({ message: "Internal server error" });
     }
   }
+  // Post Many User
+  async insertManyUser(req, res) {
+    try {
+      const userData = req.body;
+
+      if (!Array.isArray(userData)) {
+        return res.status(400).json({
+          message: "Invalid data format. Expected an array of user objects.",
+        });
+      }
+
+      const validUser = [];
+      const errors = [];
+
+      for (let user of userData) {
+        if (!user.name || !user.idAccount) {
+          errors.push({ user, error: "Missing required fields" });
+          continue;
+        }
+
+        let existingUser = await User.findOne({
+          user: user.name,
+          idAccount: user.idAccount,
+        });
+        if (existingUser) {
+          errors.push({ user, error: "User with this title already exists" });
+          continue;
+        }
+        validUser.push(user);
+      }
+
+      if (errors.length) {
+        return res.status(400).json({
+          message: "Some user items could not be added",
+          errors,
+        });
+      }
+
+      const results = await User.insertMany(validUser);
+      return res.status(201).json({
+        message: "User data added successfully",
+        data: mutipleMongooseToObject(results),
+      });
+    } catch (error) {
+      console.error("Error insert User:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
 
   //Edit Media
   async editUser(req, res) {

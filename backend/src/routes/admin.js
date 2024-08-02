@@ -27,8 +27,9 @@ router.patch("/media/edit/:id", MediaController.editMedia);
 router.delete("/media/delete/:id", MediaController.deleteMedia);
 
 // My List
-router.get("/mylist/all", MyListController.getMyListAll);
+router.get("/mylist/byiduser/:iduser", MyListController.getMyListbyIdUser);
 router.post("/mylist/insertone", MyListController.insertOneMyList);
+router.post("/mylist/insertmany", MyListController.insertManyMyList);
 router.delete("/mylist/delete", MyListController.deleteOneMyList);
 
 //Account
@@ -39,6 +40,7 @@ router.post("/signup", AccountController.signUp);
 router.get("/userall/:idaccount", UserController.getUserAllbyAccount);
 router.get("/user/:id", UserController.getUserbyId);
 router.post("/user/insertone", UserController.insertOneUser);
+router.post("/user/insertmany", UserController.insertManyUser);
 router.patch("/user/edit/:id", UserController.editUser);
 router.delete("/user/delete/:id", UserController.deleteUser);
 

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useDebounce } from '~/hooks';
-import * as searchSevice from '~/services/searchService';
+
+import * as SearchService from '~/services/SearchService';
 
 import CardMovie from '~/components/CardMovie';
 
@@ -76,7 +77,8 @@ function Search() {
         }
 
         const fetchAPI = async () => {
-            const res = await searchSevice.search(debounced);
+            const res = await SearchService.search(debounced);
+
             setResult(res);
         };
         fetchAPI();
@@ -90,8 +92,8 @@ function Search() {
                     <div className={cx('text-error')}>
                         <p className={cx('title-error')}>{`Your search for "${value}" did not have any matches`}</p>
                         <p className={cx('title-error')}>Suggestions:</p>
-                        {suggest.map((item) => {
-                            return <li>{item.decrible}</li>;
+                        {suggest.map((item, index) => {
+                            return <li key={index}>{item.decrible}</li>;
                         })}
                     </div>
                 </div>
