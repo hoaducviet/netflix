@@ -2,7 +2,10 @@ import * as httpRequest from '~/utils/httpRequest';
 
 export const signIn = async (email, password) => {
     try {
-        const res = await httpRequest.post('search', {
+        if (!email || !password) {
+            return null;
+        }
+        const res = await httpRequest.post('signin', {
             email: email,
             password: password,
         });

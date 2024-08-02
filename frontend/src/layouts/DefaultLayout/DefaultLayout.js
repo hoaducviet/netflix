@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useStore } from '~/hooks';
+import { actions } from '~/store/StoreProvider';
+
+import * as UserService from '~/services/UserService';
 
 import Header from './Header';
 import Footer from './Footer';
 
 import CardProfile from '~/components/CardProfile';
-
 import avatars from '~/assets/avatars';
 
 import classNames from 'classnames/bind';
@@ -41,7 +46,26 @@ const accountItems = [
 ];
 
 function DefaultLayout({ children }) {
+    const [state, dispatch] = useStore();
+    const { account, listUser } = state;
+
     const [idChoose, setIdChoose] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!account._id) {
+            return navigate('/');
+        }
+
+        const fetchAPI = async () => {
+            const result = await UserService.getUserAllbyAccount(account._id);
+            if (result) {
+                dispatch(actions.setListUser(result.data));
+            }
+        };
+
+        fetchAPI();
+    }, []);
 
     return (
         <div className={cx('container')}>
@@ -56,10 +80,10 @@ function DefaultLayout({ children }) {
                     <div className={cx('profiles-gate-content')}>
                         <p className={cx('heading-content')}>Who Are Watching?</p>
                         <div className={cx('list-profiles')}>
-                            {accountItems.map((item) => {
+                            {listUser.map((item) => {
                                 return (
                                     <div
-                                        key={item.id}
+                                        key={item._id}
                                         className={cx('card-profile')}
                                         onClick={() => setIdChoose(item.id)}
                                     >

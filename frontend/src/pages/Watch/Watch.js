@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
-import * as MediaServices from   '~/services/MediaServices'
+import * as MediaServices from '~/services/MediaServices';
 
 import medias from '~/assets/medias';
 
@@ -32,7 +32,11 @@ function Watch() {
     useEffect(() => {
         const fetchAPI = async () => {
             const res = await MediaServices.getMediaById(id);
-            setMedia(res);
+
+            if (!res.data) {
+                return setMedia(null);
+            }
+            return setMedia(res.data);
         };
         fetchAPI();
     }, []);

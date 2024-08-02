@@ -32,7 +32,7 @@ class MediaController {
         res.status(404).json({ message: "Media not found" });
       }
 
-      return res.status(200).json(mongooseToObject(result));
+      return res.status(200).json({ data: mongooseToObject(result) });
     } catch (error) {
       console.error("Error retrieving media:", error.message);
       return res.status(500).json({ message: "Internal server error" });

@@ -19,7 +19,7 @@ class MyListController {
 
       const list = await MyList.find({ idUser: idUser });
       if (!list.length) {
-        return res.status(200).json([]);
+        return res.status(200).json({data: []});
       }
 
       const results = [];
@@ -30,7 +30,7 @@ class MyListController {
         }
       }
 
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json({data: mutipleMongooseToObject(results)});
     } catch (error) {
       console.error("Error retrieving media:", error.message);
       return res.status(500).json({ message: "Internal server error" });

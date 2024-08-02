@@ -1,6 +1,7 @@
 const { mongo } = require("mongoose");
 const User = require("../models/User");
 const Account = require("../models/Account");
+const Avatar = require("../models/Avatar");
 
 const {
   mutipleMongooseToObject,
@@ -19,12 +20,28 @@ class UserController {
       }
 
       //Tìm thông tin Users theo ID Account
-      const results = await User.find({ idAccount: idAccount });
-      if (!results.length) {
-        return res.status(404).json({ message: "User is null" });
+      const listUser = await User.find({ idAccount: idAccount });
+      if (!listUser.length) {
+        return res.status(400).json({ message: "User is null", data: {} });
+      }
+      const list = mutipleMongooseToObject(listUser);
+
+      const results = [];
+      for (let item of list) {
+        if (item.idAvatar) {
+          const result = await Avatar.findById(item.idAvatar);
+
+          if (result) {
+            item = { ...item, imageURL: result.imageURL };
+          }
+          results.push(item);
+        }
       }
 
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json({
+        message: "Find user is done",
+        data: results,
+      });
     } catch (error) {
       console.error("Error retrieving media:", error.message);
       return res.status(500).json({ message: "Internal server error" });

@@ -1,34 +1,57 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+
+import { LoginContext } from '~/store/LoginProvider';
 
 import classNames from 'classnames/bind';
 import styles from './InputForm.module.scss';
 
 const cx = classNames.bind(styles);
 
-function InputForm({ value, onChange, label }) {
+function InputForm({ type, label }) {
+    const { setEmail, setPassword } = useContext(LoginContext);
+
+    const [value, setValue] = useState('');
     const [isFocused, setIsFocused] = useState(false);
-    const [hasValue, setHasValue] = useState(false);
 
     const inputRef = useRef();
-    const labelRef = useRef();
 
     const handleClick = (e) => {
         e.preventDefault();
+        setIsFocused(true);
+
+        inputRef.current.style.display = 'flex';
         inputRef.current.focus();
+    };
+
+    const handleBlur = () => {
+        setIsFocused(false);
+        if (value.trim() === '') {
+            setValue('');
+            inputRef.current.style.display = 'none';
+        }
+    };
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+        if (type === 'email') {
+            setEmail(e.target.value);
+        } else if (type === 'password') {
+            setPassword(e.target.value);
+        }
     };
 
     return (
         <div className={cx('container')}>
             <button className={cx('inner')} onClick={handleClick}>
-                <label ref={labelRef} className={cx('label-input')}>
-                    {label}
-                </label>
+                <label className={cx('label-input', { 'label-focused': isFocused || value })}>{label}</label>
                 <input
                     ref={inputRef}
                     value={value}
-                    onChange={onChange}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className={cx('text-input')}
-                    type="text"
+                    type={type}
+                    style={{ display: value ? 'flex' : 'none' }}
                 ></input>
             </button>
         </div>

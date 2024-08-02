@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { LoginContext } from '~/store/LoginProvider';
 
 import Button from '~/components/Button';
 import InputForm from '../InputForm';
@@ -23,19 +25,8 @@ const buttons = [
 ];
 
 function LoginForm() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { handleSubmit } = useContext(LoginContext);
 
-    const handleEmailChange = async (e) => {
-        setEmail(e.target.value);
-    };
-    const handlePasswordChange = async (e) => {
-        setPassword(e.target.value);
-    };
-    const handleSubmit = async (e) => {
-        // e.preventDefault();
-        console.log(email, password);
-    };
     return (
         <div className={cx('container')}>
             <header className={cx('header')}>
@@ -43,12 +34,14 @@ function LoginForm() {
             </header>
             <form className={cx('form')}>
                 <div className={cx('form-email')}>
-                    <InputForm value={email} onChange={handleEmailChange} label={'Email or mobile number'} />
+                    <InputForm type="email" label="Email or mobile number" />
                 </div>
                 <div className={cx('form-password')}>
-                    <InputForm value={password} onChange={handlePasswordChange} label={'Password'} />
+                    <InputForm type="password" label="Password" />
                 </div>
-                <Button onClick={handleSubmit} item={buttons[0]} className={cx('button')} />
+                <div className={cx('button-submit')} onClick={handleSubmit}>
+                    <Button item={buttons[0]} className={cx('button')} />
+                </div>
                 <p className={cx('form-text')}>OR</p>
                 <Button item={buttons[1]} className={cx('button')} />
                 <Link className={cx('form-forgot-text')}>

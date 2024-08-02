@@ -23,7 +23,7 @@ class AccountController {
 
       //Nếu không tồn tại Account -> Trả về lỗi
       if (!result) {
-        return res.status(404).json({ message: "Account not exist" });
+        return res.status(400).json({ message: "Account not exist" });
       }
 
       //Nếu tồn tại Account, nhưng không khớp Password -> Trả về lỗi
@@ -34,7 +34,7 @@ class AccountController {
       //Nếu qua các case bên trên -> Trả về messsage và thông tin tài khoản
       return res.status(201).json({
         message: "User signed in successfully",
-        user: result,
+        data: result,
       });
     } catch (error) {
       console.error("Error creating user:", error.message);

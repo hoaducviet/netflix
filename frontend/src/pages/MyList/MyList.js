@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { useStore } from '~/hooks';
+
 import CardMovie from '~/components/CardMovie';
 
 import classNames from 'classnames/bind';
@@ -9,15 +11,15 @@ import * as MyListServices from '~/services/MyListServices';
 
 const cx = classNames.bind(styles);
 
-const idUser = '66ac731018500d14a5aab5d4';
-
 function MyList() {
+    const [state, dispatch] = useStore();
+    const { currentUser } = state;
     const [media, setMedia] = useState([]);
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const res = await MyListServices.getMyListbyIdUser(idUser);
-            setMedia(res);
+            const res = await MyListServices.getMyListbyIdUser(currentUser._id);
+            setMedia(res.data);
         };
         fetchAPI();
     }, []);

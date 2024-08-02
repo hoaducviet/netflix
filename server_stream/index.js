@@ -11,12 +11,12 @@ const videoFileMap = {
 };
 
 const avatarFileMap = {
-  avatar1: "./images/avatar1.png",
-  avatar2: "./images/avatar2.png",
-  avatar3: "./images/avatar3.png",
-  avatar4: "./images/avatar4.png",
-  avatar5: "./images/avatar5.png",
-}
+  avatar1: "./avatars/avatar1.png",
+  avatar2: "./avatars/avatar2.png",
+  avatar3: "./avatars/avatar3.png",
+  avatar4: "./avatars/avatar4.png",
+  avatar5: "./avatars/avatar5.png",
+};
 
 const imageFileMap = {
   logo: "./images/logo.png",

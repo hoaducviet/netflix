@@ -23,6 +23,7 @@ router.post("/signin", AccountController.signIn);
 router.post("/signup", AccountController.signUp);
 
 //User
+router.get("/userall/:idaccount", UserController.getUserAllbyAccount);
 router.post("/user/insertone", UserController.insertOneUser);
 router.post("/user/insertmany", UserController.insertManyUser);
 
