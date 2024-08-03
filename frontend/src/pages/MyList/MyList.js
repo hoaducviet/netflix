@@ -19,7 +19,9 @@ function MyList() {
     useEffect(() => {
         const fetchAPI = async () => {
             const res = await MyListServices.getMyListbyIdUser(currentUser._id);
-            setMedia(res.data);
+            if (res.data) {
+                setMedia(res.data);
+            }
         };
         fetchAPI();
     }, []);

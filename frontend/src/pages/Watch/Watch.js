@@ -33,10 +33,9 @@ function Watch() {
         const fetchAPI = async () => {
             const res = await MediaServices.getMediaById(id);
 
-            if (!res.data) {
-                return setMedia(null);
+            if (res.data) {
+                return setMedia(res.data);
             }
-            return setMedia(res.data);
         };
         fetchAPI();
     }, []);

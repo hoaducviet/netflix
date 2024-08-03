@@ -7,8 +7,14 @@ export const getUserAllbyAccount = async (idAccount) => {
         }
         const res = await httpRequest.get(`userall/${idAccount}`);
 
-        return res;
+        if (res.status !== 200) {
+            return { data: null };
+        }
+
+        
+        return res.data;
     } catch (error) {
         console.log(error);
+        return { data: null };
     }
 };

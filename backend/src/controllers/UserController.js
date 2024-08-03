@@ -22,7 +22,7 @@ class UserController {
       //Tìm thông tin Users theo ID Account
       const listUser = await User.find({ idAccount: idAccount });
       if (!listUser.length) {
-        return res.status(400).json({ message: "User is null", data: {} });
+        return res.status(400).json({ message: "User is null" });
       }
       const list = mutipleMongooseToObject(listUser);
 

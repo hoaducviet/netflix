@@ -6,6 +6,8 @@ const initState = {
     currentUser: { _id: '66ac731018500d14a5aab5d4' },
 };
 
+// _id: '66ac731018500d14a5aab5d4'
+
 function reducer(state, action) {
     switch (action.type) {
         case SET_ACCOUNT:

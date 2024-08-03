@@ -79,7 +79,9 @@ function Search() {
         const fetchAPI = async () => {
             const res = await SearchService.search(debounced);
 
-            setResult(res);
+            if (res.data) {
+                setResult(res.data);
+            }
         };
         fetchAPI();
     }, [debounced]);

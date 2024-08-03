@@ -28,11 +28,11 @@ class AccountController {
 
       //Nếu tồn tại Account, nhưng không khớp Password -> Trả về lỗi
       if (result.password !== password) {
-        return res.status(401).json({ message: "Password is incorrect" });
+        return res.status(400).json({ message: "Password is incorrect" });
       }
 
       //Nếu qua các case bên trên -> Trả về messsage và thông tin tài khoản
-      return res.status(201).json({
+      return res.status(200).json({
         message: "User signed in successfully",
         data: result,
       });
@@ -59,7 +59,7 @@ class AccountController {
 
       //Nếu tồn tại -> Trả về lỗi, nếu không -> tiếp tục Check
       if (existingAccount) {
-        return res.status(409).json({ message: "Email already exists" });
+        return res.status(400).json({ message: "Email already exists" });
       }
 
       // Tạo người mới theo Schema

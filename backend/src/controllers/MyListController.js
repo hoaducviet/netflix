@@ -19,18 +19,20 @@ class MyListController {
 
       const list = await MyList.find({ idUser: idUser });
       if (!list.length) {
-        return res.status(200).json({data: []});
+        return res.status(400).json({ message: "List is null" });
       }
 
       const results = [];
       for (let item of list) {
         if (item.idMedia) {
           const result = await Media.findById(item.idMedia);
-          results.push(result);
+          if (result) {
+            results.push(result);
+          }
         }
       }
 
-      return res.status(200).json({data: mutipleMongooseToObject(results)});
+      return res.status(200).json({ data: mutipleMongooseToObject(results) });
     } catch (error) {
       console.error("Error retrieving media:", error.message);
       return res.status(500).json({ message: "Internal server error" });
