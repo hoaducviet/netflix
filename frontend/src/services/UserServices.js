@@ -1,4 +1,4 @@
-import * as httpRequest from '~/utils/httpRequest';
+import { httpRequest } from '~/utils';
 
 export const getUserAllbyAccount = async (idAccount) => {
     try {
@@ -11,7 +11,6 @@ export const getUserAllbyAccount = async (idAccount) => {
             return { data: null };
         }
 
-        
         return res.data;
     } catch (error) {
         console.log(error);

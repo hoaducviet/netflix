@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useDebounce } from '~/hooks';
 
-import * as SearchService from '~/services/SearchService';
+import { SearchServices } from '~/services';
 
 import CardMovie from '~/components/CardMovie';
 
@@ -77,7 +77,7 @@ function Search() {
         }
 
         const fetchAPI = async () => {
-            const res = await SearchService.search(debounced);
+            const res = await SearchServices.search(debounced);
 
             if (res.data) {
                 setResult(res.data);

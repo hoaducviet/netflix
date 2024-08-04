@@ -28,5 +28,3 @@ export const patch = async (path, options = {}) => {
     const response = await httpRequest.patch(path, options);
     return response;
 };
-
-export default httpRequest;

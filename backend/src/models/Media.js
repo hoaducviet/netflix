@@ -7,11 +7,17 @@ mongoose.plugin(slug);
 const Media = new Schema(
   {
     title: { type: String, unique: true, required: true, maxLength: 255 },
-    detail: { type: String, required: true, maxLength: 255 },
-    label: { type: String, required: true, maxLength: 20 },
+    detail: { type: String, required: true, maxLength: 600 },
     videoURL: { type: String, required: true, maxLength: 255 },
     trailerURL: { type: String, required: true, maxLength: 255 },
+    posterURL: { type: String, required: true, maxLength: 255 },
     imageURL: { type: String, required: true, maxLength: 255 },
+    ageRestriction: { type: String, required: true, maxLength: 20 },
+    type: { type: String, required: true },
+    label: { type: String, required: true },
+    genre: { type: String, required: true },
+    country: { type: String, required: true },
+    language: { type: String, required: true },
   },
   {
     timestamps: true,

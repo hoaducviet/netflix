@@ -16,7 +16,7 @@ const buttons = [
     },
     {
         icon: <FontAwesomeIcon icon={faCircleInfo} />,
-        content: 'More Information',
+        content: 'More Infor',
         to: '',
         color: 'gray',
     },

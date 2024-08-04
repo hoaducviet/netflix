@@ -2,16 +2,14 @@ import Tippy from '@tippyjs/react/headless';
 
 import OptionItem from '../OptionItem';
 import AccountItem from '../AccountItem';
-
 import classNames from 'classnames/bind';
 import styles from './AccountMenu.module.scss';
-
 const cx = classNames.bind(styles);
 
-function AccountMenu({ children, accountItems = [], optionItems = [], hideOnClick = false }) {
+function AccountMenu({ children, listUser = [], optionItems = [], hideOnClick = false }) {
     const renderAccountItems = () => {
-        return accountItems.map((accountItem, index) => {
-            return <AccountItem key={index} data={accountItem} />;
+        return listUser.map((user) => {
+            return <AccountItem key={user._id} user={user} className={cx('user-item')} />;
         });
     };
 

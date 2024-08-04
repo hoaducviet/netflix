@@ -1,3 +1,9 @@
 export const SET_ACCOUNT = 'set_account';
 export const SET_LIST_USER = 'set_list_user';
 export const SET_CURRENT_USER = 'set_current_user';
+export const SET_TVSHOWS = 'set_tvshows';
+export const SET_MOVIES = 'set_movies';
+export const SET_NEW_POPULAR = 'set_newpopular';
+export const SET_MYLIST = 'set_mylist';
+export const SET_LOADED = 'set_loaded';
+export const SET_RESET = 'set_reset';

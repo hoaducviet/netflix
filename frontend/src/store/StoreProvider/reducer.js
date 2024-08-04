@@ -1,12 +1,25 @@
-import { SET_ACCOUNT, SET_LIST_USER, SET_CURRENT_USER } from './constants';
+import {
+    SET_ACCOUNT,
+    SET_LIST_USER,
+    SET_CURRENT_USER,
+    SET_TVSHOWS,
+    SET_MOVIES,
+    SET_NEW_POPULAR,
+    SET_MYLIST,
+    SET_LOADED,
+    SET_RESET,
+} from './constants';
 
 const initState = {
     account: { _id: '66abf6f997ea6c6dd652480d' },
     listUser: [],
-    currentUser: { _id: '66ac731018500d14a5aab5d4' },
+    currentUser: {},
+    tvshows: {},
+    movies: {},
+    newpopular: {},
+    mylist: [],
+    loaded: false,
 };
-
-// _id: '66ac731018500d14a5aab5d4'
 
 function reducer(state, action) {
     switch (action.type) {
@@ -25,6 +38,42 @@ function reducer(state, action) {
             return {
                 ...state,
                 currentUser: action.payload,
+            };
+
+        case SET_TVSHOWS:
+            return {
+                ...state,
+                tvshows: action.payload,
+            };
+        case SET_MOVIES:
+            return {
+                ...state,
+                movies: action.payload,
+            };
+        case SET_NEW_POPULAR:
+            return {
+                ...state,
+                newpopular: action.payload,
+            };
+        case SET_MYLIST:
+            return {
+                ...state,
+                mylist: action.payload,
+            };
+        case SET_LOADED:
+            return {
+                ...state,
+                loaded: action.payload,
+            };
+        case SET_RESET:
+            return {
+                ...state,
+                currentUser: {},
+                tvshows: {},
+                movies: {},
+                newpopular: {},
+                mylist: [],
+                loaded: action.payload,
             };
 
         default:

@@ -1,7 +1,5 @@
+import { useStore } from '~/hooks';
 import AccountPropper from './AccountPropper';
-
-import classNames from 'classnames/bind';
-import styles from './AccountImage.module.scss';
 
 import avatars from '~/assets/avatars';
 
@@ -9,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark, faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 
+import classNames from 'classnames/bind';
+import styles from './AccountImage.module.scss';
 const cx = classNames.bind(styles);
 
 // Image pattern
@@ -55,14 +55,20 @@ const optionItems = [
     },
 ];
 
+const API = process.env.REACT_APP_API_SERVER_STREAM;
+
 function AccountImage() {
+    const [state] = useStore();
+    const { listUser, currentUser } = state;
+    const listUserMinus = listUser.filter((user) => user._id !== currentUser._id);
+
     return (
-        <AccountPropper accountItems={accountItems} optionItems={optionItems}>
+        <AccountPropper listUser={listUserMinus} optionItems={optionItems}>
             <div className={cx('account-items')}>
                 <div className={cx('avatar-button')}>
                     <button className={cx('avatar')}>
                         <span className={cx('avatar-link')}>
-                            <img src={avatars.avatar2} alt="avatar" className={cx('avatar-icon')} />
+                            <img src={`${API}${currentUser.imageURL}`} alt="avatar" className={cx('avatar-icon')} />
                         </span>
                     </button>
                     <span className={cx('caret')}>

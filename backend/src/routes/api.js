@@ -29,6 +29,7 @@ router.post("/user/insertmany", UserController.insertManyUser);
 
 // Media
 router.get("/media/byid/:id", MediaController.getMediabyId);
+router.get("/media/all", MediaController.getMediaAll);
 
 // My List
 router.get("/mylist/byiduser/:iduser", MyListController.getMyListbyIdUser);

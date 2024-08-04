@@ -1,7 +1,7 @@
 .avatar-image {
     display: block;
     padding: 5px 10px;
-    
+
     .avatar-icon {
         width: 32px;
         height: 32px;
@@ -10,10 +10,9 @@
     }
 }
 
-.name-image{
+.name-image {
     display: block;
     align-items: center;
-    
 }
 
 .container {
@@ -22,7 +21,7 @@
     width: 100%;
     height: auto;
 
-    &:hover{
+    &:hover {
         text-decoration: underline;
     }
 }

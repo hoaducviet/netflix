@@ -1,50 +1,56 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { useStore } from '~/hooks';
 import { actions } from '~/store/StoreProvider';
-
-import * as UserService from '~/services/UserService';
+import { LoadUser, LoadData } from '~/utils';
 
 import Header from './Header';
 import Footer from './Footer';
-
 import CardProfile from '~/components/CardProfile';
-
 import classNames from 'classnames/bind';
 import styles from './DefaultLayout.module.scss';
-
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
     const [state, dispatch] = useStore();
-    const { account, listUser } = state;
-
-    const [idChoose, setIdChoose] = useState(true);
+    const { account, listUser, loaded } = state;
+    const [isChoose, setIsChoose] = useState(false);
+    const [idUserCurrent, setIdUserCurrent] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!account._id) {
             return navigate('/');
         }
-
         const fetchAPI = async () => {
-            const result = await UserService.getUserAllbyAccount(account._id);
-            if (result.data) {
-                dispatch(actions.setListUser(result.data));
-            }
+            await LoadUser.setListUser(dispatch, actions, account._id);
         };
 
         fetchAPI();
+        return navigate('/browse');
     }, []);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            if (idUserCurrent) {
+                await LoadUser.setCurrentUser(dispatch, actions, listUser, idUserCurrent);
+                await LoadData.getData(dispatch, actions, idUserCurrent);
+            }
+        };
+        fetchAPI();
+    }, [isChoose]);
 
     return (
         <div className={cx('container')}>
-            {!!idChoose ? (
+            {!!isChoose ? (
                 <>
-                    <Header />
-                    {children}
-                    <Footer />
+                    {loaded && (
+                        <>
+                            <Header />
+                            {children}
+                            <Footer />
+                        </>
+                    )}
                 </>
             ) : (
                 <div className={cx('profiles-gate-container')}>
@@ -56,7 +62,10 @@ function DefaultLayout({ children }) {
                                     <div
                                         key={item._id}
                                         className={cx('card-profile')}
-                                        onClick={() => setIdChoose(item.id)}
+                                        onClick={() => {
+                                            setIsChoose(true);
+                                            setIdUserCurrent(item._id);
+                                        }}
                                     >
                                         <CardProfile data={item} />
                                     </div>

@@ -4,14 +4,13 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import CardMovieOrder from '~/components/CardMovieOrder';
-
-import classNames from 'classnames/bind';
-import styles from './SlideMovieOrder.module.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7, fa8, fa9 } from '@fortawesome/free-solid-svg-icons';
 
+import CardMovieOrder from '~/components/CardMovieOrder';
+import classNames from 'classnames/bind';
+import styles from './SlideMovieOrder.module.scss';
 const cx = classNames.bind(styles);
 
 function CustomPrevArrow({ onClick }) {
@@ -30,6 +29,7 @@ function CustomNextArrow({ onClick }) {
     );
 }
 
+const iconsNumbers = [fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7, fa8, fa9];
 function SlideMovieOrder({ item }) {
     const settings = {
         className: 'center',
@@ -42,13 +42,18 @@ function SlideMovieOrder({ item }) {
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,
     };
+
     let Comp = 'div';
     const props = {};
-
     if (item.to) {
         Comp = Link;
         props.to = item.to;
     }
+
+    const slideData = item.data.map((slide, index) => ({
+        ...slide,
+        iconNumber: <FontAwesomeIcon icon={iconsNumbers[index]} />,
+    }));
 
     return (
         <div className={cx('container')}>
@@ -59,7 +64,7 @@ function SlideMovieOrder({ item }) {
             </h2>
             <div className={cx('row-slider')}>
                 <Slider {...settings}>
-                    {item.data.map((movie, index) => {
+                    {slideData.map((movie, index) => {
                         return <CardMovieOrder key={index} movie={movie} className={cx('card')} />;
                     })}
                 </Slider>

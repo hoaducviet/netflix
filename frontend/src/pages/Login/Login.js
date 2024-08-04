@@ -6,7 +6,7 @@ import LoginForm from '~/components/LoginForm';
 
 import { useStore } from '~/hooks';
 import { actions } from '~/store/StoreProvider';
-import * as AccountService from '~/services/AccountService';
+import * as AccountServices from '~/services/AccountServices';
 
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
@@ -20,7 +20,7 @@ function Login() {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const result = await AccountService.signIn(email, password);
+            const result = await AccountServices.signIn(email, password);
 
             if (result.data) {
                 dispatch(actions.setAccount(result.data));

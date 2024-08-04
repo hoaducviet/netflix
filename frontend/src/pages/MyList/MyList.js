@@ -1,30 +1,21 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, memo } from 'react';
 import { useStore } from '~/hooks';
 
 import CardMovie from '~/components/CardMovie';
-
 import classNames from 'classnames/bind';
 import styles from './MyList.module.scss';
-
-import * as MyListServices from '~/services/MyListServices';
-
 const cx = classNames.bind(styles);
 
 function MyList() {
-    const [state, dispatch] = useStore();
-    const { currentUser } = state;
+    const [state] = useStore();
+    const { mylist } = state;
     const [media, setMedia] = useState([]);
 
     useEffect(() => {
-        const fetchAPI = async () => {
-            const res = await MyListServices.getMyListbyIdUser(currentUser._id);
-            if (res.data) {
-                setMedia(res.data);
-            }
-        };
-        fetchAPI();
-    }, []);
+        if (mylist.length) {
+            setMedia(mylist);
+        }
+    }, [mylist]);
 
     return (
         <div className={cx('container')}>
@@ -42,4 +33,4 @@ function MyList() {
     );
 }
 
-export default MyList;
+export default memo(MyList);
