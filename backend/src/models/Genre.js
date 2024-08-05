@@ -7,6 +7,7 @@ mongoose.plugin(slug);
 const Genre = new Schema(
   {
     name: { type: String, unique: true, required: true },
+    type: { type: String, required: true },
   },
   {
     timestamps: true,
