@@ -2,13 +2,11 @@ import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
-import * as MediaServices from '~/services/MediaServices';
+import { MediaServices } from '~/services';
 
 import medias from '~/assets/medias';
-
 import classNames from 'classnames/bind';
 import styles from './Watch.module.scss';
-
 const cx = classNames.bind(styles);
 
 const API = process.env.REACT_APP_API_SERVER_STREAM;
@@ -52,7 +50,6 @@ function Watch() {
     };
 
     const videoURL = media ? `${API}${media.videoURL}` : '';
-
     return (
         <div className={cx('video-wrapper')}>
             <div className={cx('video')}>

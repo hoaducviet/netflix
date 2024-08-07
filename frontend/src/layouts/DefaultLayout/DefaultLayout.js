@@ -13,8 +13,8 @@ const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
     const [state, dispatch] = useStore();
-    const { account, listUser, loaded } = state;
-    const [isChoose, setIsChoose] = useState(false);
+    const { account, listUser, loaded, currentUser } = state;
+    const [isChoose, setIsChoose] = useState(!!currentUser._id);
     const [idUserCurrent, setIdUserCurrent] = useState('');
     const navigate = useNavigate();
 

@@ -1,7 +1,6 @@
+import { memo } from 'react';
 import { useStore } from '~/hooks';
 import AccountPropper from './AccountPropper';
-
-import avatars from '~/assets/avatars';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -10,27 +9,6 @@ import { faBookmark, faCircleQuestion, faUser } from '@fortawesome/free-regular-
 import classNames from 'classnames/bind';
 import styles from './AccountImage.module.scss';
 const cx = classNames.bind(styles);
-
-// Image pattern
-
-const accountItems = [
-    {
-        avatarUrl: avatars.avatar5,
-        name: 'Jennifer',
-    },
-    {
-        avatarUrl: avatars.avatar2,
-        name: 'Robert',
-    },
-    {
-        avatarUrl: avatars.avatar3,
-        name: 'Maxnumpy',
-    },
-    {
-        avatarUrl: avatars.avatar4,
-        name: 'Beyonces',
-    },
-];
 
 const optionItems = [
     {
@@ -80,4 +58,4 @@ function AccountImage() {
     );
 }
 
-export default AccountImage;
+export default memo(AccountImage);

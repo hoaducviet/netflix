@@ -54,7 +54,7 @@ function Home() {
                                 playing={playing}
                                 width="100%"
                                 height="100%"
-                                muted={true}
+                                muted={false}
                                 onEnded={handleEnded}
                             />
                         )}

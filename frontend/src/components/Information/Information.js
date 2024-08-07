@@ -23,7 +23,8 @@ const buttons = [
 ];
 
 function Information({ movie }) {
-    buttons[0].to = `/watch/${movie.id}`;
+    buttons[0].to = `/watch/${movie._id}`;
+
     return (
         <div className={cx('container')}>
             <div className={cx('title')}>{movie.title}</div>

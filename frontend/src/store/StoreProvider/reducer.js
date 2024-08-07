@@ -11,7 +11,7 @@ import {
 } from './constants';
 
 const initState = {
-    account: { _id: '66abf6f997ea6c6dd652480d' },
+    account: {},
     listUser: [],
     currentUser: {},
     tvshows: {},
@@ -20,7 +20,7 @@ const initState = {
     mylist: [],
     loaded: false,
 };
-
+// _id: '66b3414af6591befc41a2c3d'
 function reducer(state, action) {
     switch (action.type) {
         case SET_ACCOUNT:
